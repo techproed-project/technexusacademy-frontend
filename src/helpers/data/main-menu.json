@@ -2,26 +2,26 @@
 	{
 		"title": "Home",
 		"link": "/",
-		"icon": "AiOutlineHome"
+		"icon": "pi pi-home"
 	},
 	{
 		"title": "Courses",
 		"link": "/courses",
-		"icon": "AiFillForward"
+		"icon": "pi pi-book"
 	},
 	{
 		"title": "Events",
 		"link": "/events",
-		"icon": "AiOutlineCalendar"
+		"icon": "pi pi-calendar"
 	},
 	{
 		"title": "About",
 		"link": "/about",
-		"icon": "AiOutlineInfoCircle"
+		"icon": "pi pi-info-circle"
 	},
 	{
 		"title": "Contact",
 		"link": "/contact",
-		"icon": "AiOutlineAliwangwang"
+		"icon": "pi pi-phone"
 	}
 ]
