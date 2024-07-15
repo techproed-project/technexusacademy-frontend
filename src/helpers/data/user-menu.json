@@ -1,0 +1,38 @@
+{
+    "admin" : [
+        { "title": "Dashboard", "link": "/dashboard"},
+        { "title": "Admin Management", "link": "/dashboard/admin"},
+        { "title": "Manager Management", "link": "/dashboard/manager"},
+        { "title": "Assistant Manager Management", "link": "/dashboard/assistant-manager"},
+        { "title": "Education Terms", "link": "/dashboard/education-term"},
+        { "title": "Lesson Management", "link": "/dashboard/lesson"},
+        { "title": "Program Management", "link": "/dashboard/program"},
+        { "title": "Teacher Management", "link": "/dashboard/teacher"},
+        { "title": "Student Management", "link": "/dashboard/student"},
+        { "title": "Contact Message", "link": "/dashboard/contact-message"}
+    ],
+    "manager" : [
+        { "title": "Dashboard", "link": "/dashboard"},
+        { "title": "Assistant Manager Management", "link": "/dashboard/assistant-manager"},
+        { "title": "Contact Message", "link": "/dashboard/contact-message"}
+    ],
+    "assistantmanager" : [
+        { "title": "Dashboard", "link": "/dashboard"},
+        { "title": "Education Terms", "link": "/dashboard/education-term"},
+        { "title": "Lesson Management", "link": "/dashboard/lesson"},
+        { "title": "Program Management", "link": "/dashboard/program"},
+        { "title": "Teacher Management", "link": "/dashboard/teacher"},
+        { "title": "Student Management", "link": "/dashboard/student"},
+        { "title": "Contact Message", "link": "/dashboard/contact-message"}
+    ],
+    "teacher" : [
+        { "title": "Dashboard", "link": "/dashboard"},
+        { "title": "Student Info Management", "link": "/dashboard/student-info"},
+        { "title": "Meet Management", "link": "/dashboard/meet"}
+    ],
+    "student" : [
+        { "title": "Dashboard", "link": "/dashboard"},
+        { "title": "Choose Lesson", "link": "/dashboard/choose-lesson"},
+        { "title": "Grades & Meets", "link": "/dashboard/grades-meets"}
+    ]
+}

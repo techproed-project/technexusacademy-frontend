@@ -4,11 +4,11 @@ import { Link } from "next/navigation";
 import Image from "next/image";
 import { config } from "@/helpers/config";
 
-const Logo = () => {
+const Logo = ({ theme = "dark" }) => {
 	return (
 		<NavbarBrand href="/" as={Link}>
 			<Image
-				src="/img/logos/logo-dark.png"
+				src={`/img/logos/logo-${theme}.png`}
 				alt={config.project.name}
 				width={200}
 				height={90}

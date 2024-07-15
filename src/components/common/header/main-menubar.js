@@ -20,7 +20,7 @@ const MainMenubar = () => {
 						<Offcanvas.Title
 							id="main-menu-title"
 						>
-							Offcanvas
+							Tech Nexus Academy
 						</Offcanvas.Title>
 					</Offcanvas.Header>
 					<Offcanvas.Body>
