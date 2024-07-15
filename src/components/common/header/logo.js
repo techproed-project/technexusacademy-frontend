@@ -11,7 +11,7 @@ const Logo = ({ theme = "dark" }) => {
 				src={`/img/logos/logo-${theme}.png`}
 				alt={config.project.name}
 				width={200}
-				height={90}
+				height={57}
 			/>
 		</NavbarBrand>
 	);
