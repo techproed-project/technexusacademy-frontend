@@ -1,0 +1,48 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as v;
+
+.main-slider {
+	img {
+		width: 100%;
+		height: calc(100vh - 130px);
+		object-fit: cover;
+		object-position: left top;
+
+		@media (min-width: 1200px) {
+			object-position: right top;
+		}
+	}
+
+	.carousel-caption {
+		bottom: 50%;
+        @include m.transform(translateY(50%));
+
+        h3{
+            font-size: 2rem;
+            font-weight: 700;
+            color: v.$color2;
+        }
+        p{
+            font-size: 1.1rem;
+            @include m.shadow(text, 0 0 3px v.$color2)
+        }
+
+        @media(min-width: 576px){
+            h3{
+                font-size: 2.5rem;
+                font-weight: 700;
+            }
+            p{
+                font-size: 1.2rem;
+            }
+        }
+
+
+        @media (min-width: 1200px) {
+			text-align: left;
+            width: 50%;
+		}
+
+
+	}
+}
