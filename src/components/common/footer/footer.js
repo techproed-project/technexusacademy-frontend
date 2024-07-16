@@ -12,7 +12,7 @@ const Footer = () => {
 		<footer>
 			<Container>
 				<Row className="g-4">
-					<Col xl={4}>
+					<Col xl={12}>
 						<Logo theme="light" />
 						<p className="mt-3">{config.project.description}</p>
 					</Col>

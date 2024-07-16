@@ -1,14 +1,21 @@
 @use "../../../styles/variables" as v;
 @use "../../../styles/mixins" as m;
 
-.topbar{
-    background-color: v.$color1;
-    color: v.$color2;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.topbar {
+	background-color: v.$color1;
+	color: v.$color2;
+	padding-top: 10px;
+	padding-bottom: 10px;
 
-    .container{
-        @include m.flex();
-    }
+	.container {
+		@include m.flex();
+	}
 
+	.slogan {
+		display: none;
+
+		@media (min-width: 992px) {
+			display: block;
+		}
+	}
 }

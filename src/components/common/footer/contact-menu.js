@@ -11,8 +11,8 @@ const ContactMenu = (props) => {
 	return (
 		<Nav {...props}>
 			{menuItems.map((item) => (
-				<Nav.Link key={item[0]} href={item[1].url} as={Link}>
-					<i className={item[1].icon}></i> {item[0]}
+				<Nav.Link key={item[0]} href={item[1].link} as={Link}>
+					<i className={item[1].icon}></i> {item[1].value}
 				</Nav.Link>
 			))}
 		</Nav>

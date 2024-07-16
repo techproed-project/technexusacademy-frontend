@@ -1,6 +1,6 @@
 import { config } from "@/helpers/config";
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "./topbar.scss";
 
 const Topbar = () => {
