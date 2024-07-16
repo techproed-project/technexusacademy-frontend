@@ -6,6 +6,8 @@ $color4: rgb(239, 239, 239);
 $color1-op-50: rgb(241, 90, 92, 0.5);
 $color2-op-50: rgb(29, 64, 86, 0.5);
 
+$vendors: ("", "-webkit-", "-moz-", "-ms-", "-o-");
+
 
 /* BOOTSTRAP */
 $font-family-sans-serif: var(--font-montserrat);

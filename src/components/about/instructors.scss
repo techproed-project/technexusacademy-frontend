@@ -1,0 +1,13 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.instructors{
+    h2{
+        background-color: v.$color1;
+        padding: 50px;
+        text-align: center;
+        height: 100%;
+        @include m.flex($ai: center);
+        @include m.border-radius(5px)
+    }
+}
