@@ -1,0 +1,23 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.course-card {
+	height: 100%;
+	.card-title {
+		margin-top: 10px;
+		color: v.$color2;
+	}
+
+	.card-footer {
+		background: none;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		@include m.flex();
+		border-color: v.$color2-op-10;
+		color: v.$color1;
+
+		span {
+			@include m.flex($ai: center, $gap: 5px);
+		}
+	}
+}
