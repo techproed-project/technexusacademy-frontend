@@ -8,24 +8,27 @@ const UpcomingEventsCarousel = ({ data }) => {
     const responsiveOptions = [
         {
             breakpoint: '1400px',
-            numVisible: 4,
+            numVisible: 3,
+            numScroll: 1
+
         },
         {
             breakpoint: '1200px',
-            numVisible: 3,
+            numVisible: 2,
+            numScroll: 1
+
         },
         {
             breakpoint: '768px',
-            numVisible: 2,
-        },
-        {
-            breakpoint: '576px',
             numVisible: 1,
+            numScroll: 1
+
         }
+        
     ];
 
     const itemTemplate = (item) => {
-		return <div className="px-3"><EventCard {...item} /></div>;
+		return <div className="px-3 h-100"><EventCard {...item} /></div>;
 	};
 
 	return (
