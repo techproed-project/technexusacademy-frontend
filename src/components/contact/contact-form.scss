@@ -1,0 +1,16 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.contact-form{
+    .input-group-text{
+        background: none;
+        color: v.$color1;
+        border:none;
+    }
+
+    .form-control {
+        border:none;
+        border-bottom: 1px solid v.$color2-op-30;
+        @include m.border-radius(0);
+}
+}

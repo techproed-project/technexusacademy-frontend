@@ -1,0 +1,12 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.contact {
+	.container {
+		@include m.shadow(box, 0 5px 10px v.$color2-op-50);
+		@include m.transform(translateY(50px));
+		background-color: white;
+        padding: 50px;
+        margin-top: -50px;
+	}
+}
