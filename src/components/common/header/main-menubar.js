@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
+import { Container, Navbar, Offcanvas } from "react-bootstrap";
 import Logo from "./logo";
 import MainMenu from "./main-menu";
 import ButtonCallNow from "./button-call-now";
+import Image from "next/image";
 
 const MainMenubar = () => {
 	return (
@@ -18,14 +19,18 @@ const MainMenubar = () => {
 				>
 					<Offcanvas.Header closeButton>
 						<Offcanvas.Title id="main-menu-title">
-							Tech Nexus Academy
+							<Image
+								src="/img/logos/logo-dark-single-line.png"
+								width="268"
+								height="29"
+								className="img-fluid"
+							/>
 						</Offcanvas.Title>
 					</Offcanvas.Header>
 					<Offcanvas.Body>
 						<MainMenu className="justify-content-center flex-grow-1" />
 
-                        <ButtonCallNow/>
-
+						<ButtonCallNow />
 					</Offcanvas.Body>
 				</Navbar.Offcanvas>
 			</Container>
