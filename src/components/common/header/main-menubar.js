@@ -8,7 +8,12 @@ import Image from "next/image";
 
 const MainMenubar = () => {
 	return (
-		<Navbar expand="lg" className="bg-body-tertiary shadow" sticky="top">
+		<Navbar
+			expand="lg"
+			className="bg-body-tertiary shadow"
+			sticky="top"
+			collapseOnSelect
+		>
 			<Container>
 				<Logo />
 				<Navbar.Toggle aria-controls="main-menu" />

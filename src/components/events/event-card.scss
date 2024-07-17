@@ -1,9 +1,9 @@
 @use "../../styles/variables" as v;
 @use "../../styles/mixins" as m;
 
-.course-card {
+.event-card {
 	height: 100%;
-	
+
 	img{
 		width:100%;
 		height: auto;
@@ -14,12 +14,10 @@
 		color: v.$color2;
 	}
 
-	.card-footer {
-		background: none;
+	.card-subtitle {
 		padding-top: 10px;
 		padding-bottom: 10px;
 		@include m.flex();
-		border-color: v.$color2-op-10;
 		color: v.$color1;
 
 		span {
