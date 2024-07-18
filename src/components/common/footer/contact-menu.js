@@ -7,7 +7,6 @@ import { config } from "@/helpers/config";
 const menuItems = Object.entries(config.contact.info);
 
 const ContactMenu = (props) => {
-	console.log(menuItems)
 	return (
 		<Nav {...props}>
 			{menuItems.map((item) => (
