@@ -21,7 +21,7 @@ export const createContactAction = async (prevData, formData) => {
 
 		if (!res.ok) {
 			console.log(data);
-			return response(false, "", {});
+			return response(false, "", data?.validations);
 		}
 
 		// revalidatePath("/dashboard/contact-message");

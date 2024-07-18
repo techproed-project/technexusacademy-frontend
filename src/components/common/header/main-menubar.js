@@ -5,6 +5,7 @@ import Logo from "./logo";
 import MainMenu from "./main-menu";
 import ButtonCallNow from "./button-call-now";
 import Image from "next/image";
+import { config } from "@/helpers/config";
 
 const MainMenubar = () => {
 	return (
@@ -29,6 +30,7 @@ const MainMenubar = () => {
 								width="268"
 								height="29"
 								className="img-fluid"
+								alt={config.project.name}
 							/>
 						</Offcanvas.Title>
 					</Offcanvas.Header>

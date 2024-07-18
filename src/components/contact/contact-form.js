@@ -1,20 +1,31 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
 import "./contact-form.scss";
 import { useFormState } from "react-dom";
 import { createContactAction } from "@/actions/contact-actions";
 import { initialResponse } from "@/helpers/form-validation";
+import { swAlert } from "@/helpers/swal";
 
 const ContactForm = () => {
 	const [state, dispatch] = useFormState(
 		createContactAction,
 		initialResponse
 	);
+	const formRef = useRef();
+
+	if (state.message) {
+		if (state.ok) {
+			swAlert(state.message, "success");
+			formRef.current.reset();
+		} else {
+			swAlert(state.message, "error");
+		}
+	}
 
 	return (
 		<div className="contact-form">
-			<Form action={dispatch}>
+			<Form action={dispatch} ref={formRef}>
 				<Row>
 					<Col md={6}>
 						<InputGroup className="mb-3" size="lg">
@@ -26,7 +37,11 @@ const ContactForm = () => {
 								placeholder="Name"
 								aria-label="Name"
 								aria-describedby="name"
+								isInvalid={!!state?.errors?.name}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{state?.errors?.name}
+							</Form.Control.Feedback>
 						</InputGroup>
 					</Col>
 					<Col md={6}>
@@ -39,7 +54,11 @@ const ContactForm = () => {
 								placeholder="Email"
 								aria-label="Email"
 								aria-describedby="email"
+								isInvalid={!!state?.errors?.email}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{state?.errors?.email}
+							</Form.Control.Feedback>
 						</InputGroup>
 					</Col>
 					<Col xs={12}>
@@ -52,7 +71,11 @@ const ContactForm = () => {
 								placeholder="Subject"
 								aria-label="Subject"
 								aria-describedby="subject"
+								isInvalid={!!state?.errors?.subject}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{state?.errors?.subject}
+							</Form.Control.Feedback>
 						</InputGroup>
 					</Col>
 					<Col xs={12}>
@@ -66,7 +89,11 @@ const ContactForm = () => {
 								placeholder="Message"
 								aria-label="Message"
 								aria-describedby="message"
+								isInvalid={!!state?.errors?.message}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{state?.errors?.message}
+							</Form.Control.Feedback>
 						</InputGroup>
 					</Col>
 				</Row>
