@@ -1,24 +1,50 @@
 import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials"
+import Credentials from "next-auth/providers/credentials";
 import { login } from "./services/auth-service";
 
 const config = {
 	providers: [
-        Credentials({
-            authorize: async(credentials) => {
-                const res = await login(credentials);
-                const data = await res.json();
+		Credentials({
+			authorize: async (credentials) => {
+				const res = await login(credentials);
+				const data = await res.json();
 
-                if(!res.ok) return null;
+				if (!res.ok) return null;
 
-                console.log(data);
+				const payload = {
+					user: { ...data, sub: "1212312" },
+					accessToken: data.token.split(" ")[1],
+					sub: "234234"
+				};
+				delete payload.user.token;
+				return payload;
+			},
+		}),
+	],
+	callbacks: {
+		// middleware in kapsama alanina giren sayfalara yapilan isteklerden hemen once calisir
+		authorized({ auth, request }) {
+			const { pathname } = request.nextUrl;
 
-            }
-        })
-    ],
-    pages:{
-        signIn: "/login"
-    }
+			const isLoggedIn = auth?.user;
+			const isInLoginPage = pathname.startsWith("/login");
+			const isInDashboardPages = pathname.startsWith("/dashboard");
+
+			if (isLoggedIn) {
+				if (isInLoginPage) {
+					const url = new URL("/dashboard", request.nextUrl);
+					return Response.redirect(url);
+				}
+			} else if (isInDashboardPages) {
+				return false;
+			}
+
+			return true;
+		},
+	},
+	pages: {
+		signIn: "/login",
+	},
 };
 
 export const { handlers, signIn, signOut, auth } = NextAuth(config);

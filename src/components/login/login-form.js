@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Card, Col, Container, Form, Row } from "react-bootstrap";
+import { Alert, Card, Col, Container, Form, Row } from "react-bootstrap";
 import TextInput from "../common/form-fields/text-input";
 import SubmitButton from "../common/form-fields/submit-button";
 import { useFormState } from "react-dom";
@@ -12,25 +12,31 @@ const LoginForm = () => {
 
 	return (
 		<Container>
-			<Row>
-				<Col>
+			<Row className="justify-content-center">
+				<Col md={8} lg={6}>
 					<Card>
 						<Card.Body>
 							<h4>Please enter your username and password</h4>
+
+							{!state?.ok && state?.message ? (
+								<Alert>{state?.message}</Alert>
+							) : null}
 
 							<Form action={dispatch}>
 								<TextInput
 									className="mb-3"
 									label="Username"
 									name="username"
-                                    error={state?.errors?.username}
+									defaultValue="root"
+									error={state?.errors?.username}
 								/>
 								<TextInput
 									type="password"
 									className="mb-3"
 									label="Password"
 									name="password"
-                                    error={state?.errors?.password}
+									defaultValue="123456aA."
+									error={state?.errors?.password}
 								/>
 
 								<SubmitButton title="Login" />
