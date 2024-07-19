@@ -12,9 +12,8 @@ const config = {
 				if (!res.ok) return null;
 
 				const payload = {
-					user: { ...data, sub: "1212312" },
+					user: { ...data, name: "test" },
 					accessToken: data.token.split(" ")[1],
-					sub: "234234"
 				};
 				delete payload.user.token;
 				return payload;
@@ -40,6 +39,18 @@ const config = {
 			}
 
 			return true;
+		},
+
+		// jwt token a ihtiac dyulan her yerde calisir
+		async jwt({ token, user }) {
+			return { ...user, ...token };
+		},
+
+		// session a ihtiyac duyulan her yerde calisir
+		async session({ session, token }) {
+			session.user = token.user;
+			session.accessToken = token.accessToken;
+			return session;
 		},
 	},
 	pages: {

@@ -17,12 +17,12 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={montserrat.variable}>
 			<body suppressHydrationWarning={true}>
-        <Topbar/>
-		
-        <MainMenubar/>
-        {children}
-		<Footer/>
-		</body>
+				<Topbar />
+
+				<MainMenubar />
+				{children}
+				<Footer />
+			</body>
 		</html>
 	);
 }
