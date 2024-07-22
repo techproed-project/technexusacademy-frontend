@@ -48,7 +48,7 @@ const AdminList = ({ data }) => {
 				<Column field="name" header="FirstName" />
 				<Column field="surname" header="LastName" />
 				<Column field="username" header="UserName" />
-				<Column header="" body={AdminToolbar} />
+				<Column header="" body={AdminToolbar} bodyStyle={{textAlign: "right"}} />
 			</DataTable>
 		</Container>
 	);

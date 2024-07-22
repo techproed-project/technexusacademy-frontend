@@ -37,5 +37,6 @@ export const getIsTokenValid = (token) => {
 	// new Date kensisine verieln MILISANIYE cinsinden degerden bir tarih saat olusturabilmek icin bu degeri 1 Ocak 1970 tarihine ekler.
 
     console.log("jwtExpireDateTime:",jwtExpireDateTime)
+    console.log("Now:",new Date())
 	return jwtExpireDateTime > new Date();
 };
