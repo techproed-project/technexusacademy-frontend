@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Button, Nav, Offcanvas } from "react-bootstrap";
 import userMenuData from "@/helpers/data/user-menu.json";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const UserMenuAuth = ({ session }) => {

@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { login } from "./services/auth-service";
+import { getIsTokenValid } from "./helpers/auth-helper";
 
 const config = {
 	providers: [
@@ -48,8 +49,15 @@ const config = {
 
 		// session a ihtiyac duyulan her yerde calisir
 		async session({ session, token }) {
-			session.user = token.user;
-			session.accessToken = token.accessToken;
+			const { accessToken, user } = token;
+
+			//console.log("accessToken:", accessToken)
+
+			const isTokenValid = getIsTokenValid(accessToken);
+			if (!isTokenValid) return Response.redirect("/login");; // Burasi kullaniciyi logout yapar.
+
+			session.user = user;
+			session.accessToken = accessToken;
 			return session;
 		},
 	},
