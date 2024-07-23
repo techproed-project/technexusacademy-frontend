@@ -54,7 +54,7 @@ const config = {
 			//console.log("accessToken:", accessToken)
 
 			const isTokenValid = getIsTokenValid(accessToken);
-			if (!isTokenValid) return Response.redirect("/login");; // Burasi kullaniciyi logout yapar.
+			if (!isTokenValid) return Response.redirect("http://localhost:3000/login"); // Burasi kullaniciyi logout yapar.
 
 			session.user = user;
 			session.accessToken = accessToken;
