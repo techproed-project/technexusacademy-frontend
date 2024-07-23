@@ -25,4 +25,8 @@ export const AdminSchema = Yup.object({
 		.matches(/[A-Z]+/, "At least one uppercase")
 		.matches(/\d+/, "At least one number")
 		.required("Required"),
+	confirmPassword: Yup.string().oneOf(
+		[Yup.ref("password")],
+		"Passwords don't match"
+	),
 });

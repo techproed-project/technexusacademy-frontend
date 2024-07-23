@@ -12,18 +12,20 @@ const SelectInput = (props) => {
 		...rest
 	} = props;
 
+	console.log(options)
+
 	return (
-		<FormGroup className={className} controlId="formBasicEmail">
+		<FormGroup className={className} controlId={rest.name}>
 			<FormLabel>{label}</FormLabel>
 
 			<FormSelect isInvalid={!!error} size="lg" {...rest}>
-				<option defaultValue="" disabled>
+				<option value="" disabled>
 					Select
 				</option>
 				{options.map((item) => (
 					<option
 						key={item[optionValue]}
-						defaultValue={item[optionValue]}
+						value={item[optionValue]}
 					>
 						{item[optionLabel]}
 					</option>

@@ -12,6 +12,7 @@ const Logo = ({ theme = "dark" }) => {
 				alt={config.project.name}
 				width={200}
 				height={57}
+				priority
 			/>
 		</NavbarBrand>
 	);
