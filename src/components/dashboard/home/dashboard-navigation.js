@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const DashboardNavigation = async () => {
 	const session = await auth();
+	console.log(session)
 	const { role } = session.user;
 	const userMenu = userMenuData[role.toLowerCase()];
 
