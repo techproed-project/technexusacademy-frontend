@@ -26,7 +26,7 @@ const config = {
 		authorized({ auth, request }) {
 			const { pathname } = request.nextUrl;
 
-			const isLoggedIn = auth?.user;
+			const isLoggedIn = !!auth?.user?.role;
 			const isInLoginPage = pathname.startsWith("/login");
 			const isInDashboardPages = pathname.startsWith("/dashboard");
 

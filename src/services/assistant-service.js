@@ -35,6 +35,9 @@ export const createAssistant = async (payload) => {
 };
 
 export const updateAssistant = async (payload) => {
+
+	console.log(payload)
+
 	return fetch(`${ASSISTANT_UPDATE_API}/${payload.id}`, {
 		method: "put",
 		body: JSON.stringify(payload),

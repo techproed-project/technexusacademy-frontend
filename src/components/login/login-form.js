@@ -6,6 +6,7 @@ import SubmitButton from "../common/form-fields/submit-button";
 import { useFormState } from "react-dom";
 import { loginAction } from "@/actions/auth-actions";
 import { initialResponse } from "@/helpers/form-validation";
+import PasswordInput from "../common/form-fields/password-input";
 
 const LoginForm = () => {
 	const [state, dispatch] = useFormState(loginAction, initialResponse);
@@ -30,13 +31,12 @@ const LoginForm = () => {
 									defaultValue="root"
 									error={state?.errors?.username}
 								/>
-								<TextInput
-									type="password"
+								<PasswordInput
+									name="password"
 									className="mb-3"
 									label="Password"
-									name="password"
-									defaultValue="123456aA."
 									error={state?.errors?.password}
+									defaultValue="123456aA."
 								/>
 
 								<SubmitButton title="Login" />

@@ -15,6 +15,7 @@ import {
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
 import { updateManagerAction } from "@/actions/manager-actions";
+import PasswordInput from "@/components/common/form-fields/password-input";
 
 const ManagerEditForm = ({ user }) => {
 	const [state, dispatch] = useFormState(
@@ -118,8 +119,7 @@ const ManagerEditForm = ({ user }) => {
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="password"
+						<PasswordInput
 							name="password"
 							className="mb-3"
 							label="Password"
@@ -127,8 +127,7 @@ const ManagerEditForm = ({ user }) => {
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="password"
+						<PasswordInput
 							name="confirmPassword"
 							className="mb-3"
 							label="Confirm Password"

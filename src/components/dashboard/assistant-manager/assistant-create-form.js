@@ -14,15 +14,16 @@ import {
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
-import { createManagerAction } from "@/actions/manager-actions";
+import { createAssistantAction } from "@/actions/assistant-actions";
+import PasswordInput from "@/components/common/form-fields/password-input";
 
-const ManagerCreateForm = () => {
-	const [state, dispatch] = useFormState(createManagerAction, initialResponse);
+const AssistantCreateForm = () => {
+	const [state, dispatch] = useFormState(createAssistantAction, initialResponse);
 	const router = useRouter();
 
 	if (state.message) {
 		swAlert(state.message, state.ok ? "success" : "error");
-		if (state.ok) router.push("/dashboard/manager");
+		if (state.ok) router.push("/dashboard/assistant-manager");
 	}
 
 	return (
@@ -107,8 +108,7 @@ const ManagerCreateForm = () => {
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="password"
+						<PasswordInput
 							name="password"
 							className="mb-3"
 							label="Password"
@@ -116,8 +116,7 @@ const ManagerCreateForm = () => {
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="password"
+						<PasswordInput
 							name="confirmPassword"
 							className="mb-3"
 							label="Confirm Password"
@@ -133,4 +132,4 @@ const ManagerCreateForm = () => {
 	);
 };
 
-export default ManagerCreateForm;
+export default AssistantCreateForm;

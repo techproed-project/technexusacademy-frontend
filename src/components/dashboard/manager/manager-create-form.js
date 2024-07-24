@@ -15,6 +15,7 @@ import {
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
 import { createManagerAction } from "@/actions/manager-actions";
+import PasswordInput from "@/components/common/form-fields/password-input";
 
 const ManagerCreateForm = () => {
 	const [state, dispatch] = useFormState(createManagerAction, initialResponse);
@@ -107,8 +108,7 @@ const ManagerCreateForm = () => {
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="password"
+						<PasswordInput
 							name="password"
 							className="mb-3"
 							label="Password"
@@ -116,8 +116,7 @@ const ManagerCreateForm = () => {
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="password"
+						<PasswordInput
 							name="confirmPassword"
 							className="mb-3"
 							label="Confirm Password"

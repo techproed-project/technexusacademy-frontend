@@ -14,7 +14,11 @@ const SubmitButton = ({
 	return (
 		<Button type="submit" disabled={pending} size="lg" {...rest}>
 			{pending && <Spinner variant={spinnerVariant} size="sm" />}
-			{icon && <i className={`pi pi-${icon}`}></i>}
+			{icon && (
+				<>
+					<i className={`pi pi-${icon}`}></i>&nbsp;
+				</>
+			)}
 			{title}
 		</Button>
 	);
