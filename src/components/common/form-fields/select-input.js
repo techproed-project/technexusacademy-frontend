@@ -12,8 +12,6 @@ const SelectInput = (props) => {
 		...rest
 	} = props;
 
-	console.log(options)
-
 	return (
 		<FormGroup className={className} controlId={rest.name}>
 			<FormLabel>{label}</FormLabel>

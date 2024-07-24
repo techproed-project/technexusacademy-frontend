@@ -8,26 +8,26 @@ import {
 } from "@/helpers/form-validation";
 import { AdminSchema } from "@/helpers/schemas/admin-schema";
 import {
-	createManager,
-	deleteManager,
-	updateManager,
-} from "@/services/manager-service";
+	createAssistant,
+	deleteAssistant,
+	updateAssistant,
+} from "@/services/assistant-service";
 import { revalidatePath } from "next/cache";
 
-export const createManagerAction = async (prevState, formData) => {
+export const createAssistantAction = async (prevState, formData) => {
 	try {
 		const fields = convertFormDataToJSON(formData);
 
 		AdminSchema.validateSync(fields, { abortEarly: false });
 
-		const res = await createManager(fields);
+		const res = await createAssistant(fields);
 		const data = await res.json();
 
 		if (!res.ok) {
 			return response(false, data?.message);
 		}
 
-		revalidatePath("/dashboard/manager");
+		revalidatePath("/dashboard/assistant-manager");
 		return response(true, data?.message);
 	} catch (err) {
 		if (err instanceof YupValiationError) {
@@ -38,7 +38,7 @@ export const createManagerAction = async (prevState, formData) => {
 	}
 };
 
-export const updateManagerAction = async (prevState, formData) => {
+export const updateAssistantAction = async (prevState, formData) => {
 	if (!formData.get("id"))
 		throw new Error("Id is missing in update manager action");
 
@@ -47,14 +47,14 @@ export const updateManagerAction = async (prevState, formData) => {
 
 		AdminSchema.validateSync(fields, { abortEarly: false });
 
-		const res = await updateManager(fields);
+		const res = await updateAssistant(fields);
 		const data = await res.json();
 
 		if (!res.ok) {
 			return response(false, data?.message);
 		}
 
-		revalidatePath("/dashboard/manager");
+		revalidatePath("/dashboard/assistant-manager");
 		return response(true, data?.message);
 	} catch (err) {
 		if (err instanceof YupValiationError) {
@@ -65,16 +65,16 @@ export const updateManagerAction = async (prevState, formData) => {
 	}
 };
 
-export const deleteManagerAction = async (id) => {
+export const deleteAssistantAction = async (id) => {
 	if (!id) throw new Error("Id is missing");
 
-	const res = await deleteManager(id);
+	const res = await deleteAssistant(id);
 	const data = await res.json();
 
 	if (!res.ok) {
 		return response(false, data?.message);
 	}
 
-	revalidatePath("/dashboard/manager");
+	revalidatePath("/dashboard/assistant-manager");
 	return response(true, data?.message);
 };

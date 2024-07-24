@@ -4,3 +4,9 @@
 @import 'primeicons/primeicons.css';
 
 @import "primereact/resources/themes/saga-orange/theme.css";
+
+
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+    background-color: $color1 !important;
+}

@@ -2,6 +2,7 @@ import {
 	MANAGER_CREATE_API,
 	MANAGER_DELETE_API,
 	MANAGER_GET_ALL_BY_PAGE_API,
+	MANAGER_GET_BY_ID_API,
 	MANAGER_UPDATE_API,
 } from "@/helpers/api-routes";
 import { getAuthHeader } from "@/helpers/auth-helper";
@@ -19,6 +20,12 @@ export const getAllManagersByPage = async (
 	});
 };
 
+export const getManagerById = async (id) => {
+	return fetch(`${MANAGER_GET_BY_ID_API}/${id}`, {
+		headers: await getAuthHeader(),
+	});
+};
+
 export const createManager = async (payload) => {
 	return fetch(`${MANAGER_CREATE_API}`, {
 		method: "post",
@@ -28,6 +35,7 @@ export const createManager = async (payload) => {
 };
 
 export const updateManager = async (payload) => {
+	console.log("HELLO")
 	return fetch(`${MANAGER_UPDATE_API}/${payload.id}`, {
 		method: "put",
 		body: JSON.stringify(payload),

@@ -1,22 +1,22 @@
 import PageHeader from "@/components/common/page-header";
 import Spacer from "@/components/common/spacer";
-import ManagerList from "@/components/dashboard/manager/manager-list";
-import { getAllManagersByPage } from "@/services/manager-service";
+import AssistantList from "@/components/dashboard/assistant-manager/assistant-list";
+import { getAllAssistantsByPage } from "@/services/assistant-service";
 import React from "react";
 
 const Page = async ({ searchParams }) => {
 	const { page } = searchParams;
 
-	const res = await getAllManagersByPage(page);
+	const res = await getAllAssistantsByPage(page);
 	const data = await res.json();
 
 	if (!res.ok) throw new Error(data.message);
 
 	return (
 		<>
-			<PageHeader title="Manager" />
+			<PageHeader title="Assistant Manager" />
 			<Spacer />
-			<ManagerList data={data} />
+			<AssistantList data={data}/>
 			<Spacer />
 		</>
 	);

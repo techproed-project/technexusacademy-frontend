@@ -30,6 +30,7 @@ const config = {
 			const isInLoginPage = pathname.startsWith("/login");
 			const isInDashboardPages = pathname.startsWith("/dashboard");
 
+
 			if (isLoggedIn) {
 				if (isInLoginPage) {
 					const url = new URL("/dashboard", request.nextUrl);

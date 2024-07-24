@@ -36,7 +36,5 @@ export const getIsTokenValid = (token) => {
 	const jwtExpireDateTime = new Date(jwtExpireTimeStamp * 1000); // SN degeri MS degerine cevirmek icin 1000 ile carptik
 	// new Date kensisine verieln MILISANIYE cinsinden degerden bir tarih saat olusturabilmek icin bu degeri 1 Ocak 1970 tarihine ekler.
 
-    console.log("jwtExpireDateTime:",jwtExpireDateTime)
-    console.log("Now:",new Date())
 	return jwtExpireDateTime > new Date();
 };
