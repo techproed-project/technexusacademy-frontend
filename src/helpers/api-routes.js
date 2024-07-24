@@ -21,6 +21,6 @@ export const ASSISTANT_CREATE_API = `${config.apiURL}/vicedean/save`;
 export const ASSISTANT_UPDATE_API = `${config.apiURL}/vicedean/update`;
 
 export const TERM_GET_ALL_BY_PAGE_API = `${config.apiURL}/educationTerms/search`;
-export const TERM_DELETE_API = `${config.apiURL}/educationTerms/delete`;
+export const TERM_DELETE_API = `${config.apiURL}/educationTerms`;
 export const TERM_CREATE_API = `${config.apiURL}/educationTerms`;
 

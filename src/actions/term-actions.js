@@ -6,22 +6,24 @@ import {
 	transformYupErrors,
 	YupValiationError,
 } from "@/helpers/form-validation";
+import { TermSchema } from "@/helpers/schemas/term-schema";
+import { createTerm, deleteTerm } from "@/services/term-service";
 import { revalidatePath } from "next/cache";
 
-export const createAdminAction = async (prevState, formData) => {
+export const createTermAction = async (prevState, formData) => {
 	try {
 		const fields = convertFormDataToJSON(formData);
 
-		AdminSchema.validateSync(fields, { abortEarly: false });
+		TermSchema.validateSync(fields, { abortEarly: false });
 
-		const res = await createAdmin(fields);
+		const res = await createTerm(fields);
 		const data = await res.json();
 
 		if (!res.ok) {
 			return response(false, data?.message);
 		}
 
-		revalidatePath("/dashboard/admin");
+		revalidatePath("/dashboard/education-term");
 		return response(true, data?.message);
 	} catch (err) {
 		if (err instanceof YupValiationError) {
@@ -32,16 +34,16 @@ export const createAdminAction = async (prevState, formData) => {
 	}
 };
 
-export const deleteAdminAction = async (id) => {
+export const deleteTermAction = async (id) => {
 	if (!id) throw new Error("Id is missing");
 
-	const res = await deleteAdmin(id);
-	const data = await res.text();
+	const res = await deleteTerm(id);
+	const data = await res.json();
 
 	if (!res.ok) {
-		return response(false, data);
+		return response(false, data?.message);
 	}
 
 	revalidatePath("/dashboard/admin");
-	return response(true, data);
+	return response(true, data?.message);
 };

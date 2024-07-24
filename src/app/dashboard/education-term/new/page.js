@@ -1,14 +1,14 @@
 import PageHeader from "@/components/common/page-header";
 import Spacer from "@/components/common/spacer";
-import AdminCreateForm from "@/components/dashboard/admin/admin-create-form";
+import TermCreateForm from "@/components/dashboard/term/term-create-form";
 import React from "react";
 
 const Page = () => {
 	return (
 		<>
-			<PageHeader title="New Admin" />
+			<PageHeader title="New Term" />
 			<Spacer />
-			<AdminCreateForm />
+			<TermCreateForm/>
 			<Spacer />
 		</>
 	);

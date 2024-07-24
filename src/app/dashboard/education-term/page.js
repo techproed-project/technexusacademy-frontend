@@ -1,20 +1,22 @@
 import PageHeader from "@/components/common/page-header";
 import Spacer from "@/components/common/spacer";
+import TermList from "@/components/dashboard/term/term-list";
+import { getAllTermsByPage } from "@/services/term-service";
 import React from "react";
 
 const Page = async ({ searchParams }) => {
 	const { page } = searchParams;
 
-	const res = await getAllAdminsByPage(page);
+	const res = await getAllTermsByPage(page);
 	const data = await res.json();
 
 	if (!res.ok) throw new Error(data.message);
 
 	return (
 		<>
-			<PageHeader title="Admin" />
+			<PageHeader title="Term" />
 			<Spacer />
-			<AdminList data={data} />
+			<TermList data={data}/>
 			<Spacer />
 		</>
 	);
