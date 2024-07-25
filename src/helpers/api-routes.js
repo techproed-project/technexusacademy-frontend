@@ -28,3 +28,13 @@ export const LESSON_GET_ALL_BY_PAGE_API = `${config.apiURL}/lessons/search`;
 export const LESSON_GET_ALL_API = `${config.apiURL}/lessons/getAll`;
 export const LESSON_DELETE_API = `${config.apiURL}/lessons/delete`;
 export const LESSON_CREATE_API = `${config.apiURL}/lessons/save`;
+
+export const PROGRAM_GET_ALL_BY_PAGE_API = `${config.apiURL}/lessonPrograms/search`;
+export const PROGRAM_GET_ALL_API = `${config.apiURL}/lessonPrograms/getAll`;
+export const PROGRAM_GET_BY_ID_API = `${config.apiURL}/lessonPrograms/getById`;
+export const PROGRAM_GET_ASSIGNED_API = `${config.apiURL}/lessonPrograms/getAllAssigned`;
+export const PROGRAM_GET_UNASSIGNED_API = `${config.apiURL}/lessonPrograms/getAllUnassigned`;
+export const PROGRAM_GET_TEACHER_API = `${config.apiURL}/lessonPrograms/getAllLessonProgramByTeacher`;
+export const PROGRAM_GET_STUDENT_API = `${config.apiURL}/lessonPrograms/getAllLessonProgramByStudent`;
+export const PROGRAM_DELETE_API = `${config.apiURL}/lessonPrograms/delete`;
+export const PROGRAM_CREATE_API = `${config.apiURL}/lessonPrograms/save`;
