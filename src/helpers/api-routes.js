@@ -24,3 +24,7 @@ export const TERM_GET_ALL_BY_PAGE_API = `${config.apiURL}/educationTerms/search`
 export const TERM_DELETE_API = `${config.apiURL}/educationTerms`;
 export const TERM_CREATE_API = `${config.apiURL}/educationTerms`;
 
+export const LESSON_GET_ALL_BY_PAGE_API = `${config.apiURL}/lessons/search`;
+export const LESSON_GET_ALL_API = `${config.apiURL}/lessons/getAll`;
+export const LESSON_DELETE_API = `${config.apiURL}/lessons/delete`;
+export const LESSON_CREATE_API = `${config.apiURL}/lessons/save`;

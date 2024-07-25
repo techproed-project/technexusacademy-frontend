@@ -11,14 +11,17 @@ import {
 	SubmitButton,
 	TextInput,
 	BackButton,
+	PasswordInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
 import { createAssistantAction } from "@/actions/assistant-actions";
-import PasswordInput from "@/components/common/form-fields/password-input";
 
 const AssistantCreateForm = () => {
-	const [state, dispatch] = useFormState(createAssistantAction, initialResponse);
+	const [state, dispatch] = useFormState(
+		createAssistantAction,
+		initialResponse
+	);
 	const router = useRouter();
 
 	if (state.message) {
@@ -125,7 +128,7 @@ const AssistantCreateForm = () => {
 					</Col>
 				</Row>
 
-				<BackButton className="me-3"/>
+				<BackButton className="me-3" />
 				<SubmitButton title="Create" />
 			</Form>
 		</FormContainer>

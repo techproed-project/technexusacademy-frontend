@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
 import { Alert, Card, Col, Container, Form, Row } from "react-bootstrap";
-import TextInput from "../common/form-fields/text-input";
-import SubmitButton from "../common/form-fields/submit-button";
+
 import { useFormState } from "react-dom";
 import { loginAction } from "@/actions/auth-actions";
 import { initialResponse } from "@/helpers/form-validation";
-import PasswordInput from "../common/form-fields/password-input";
+import { PasswordInput, SubmitButton, TextInput } from "../common/form-fields";
 
 const LoginForm = () => {
 	const [state, dispatch] = useFormState(loginAction, initialResponse);

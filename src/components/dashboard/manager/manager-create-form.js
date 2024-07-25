@@ -10,12 +10,11 @@ import {
 	SelectInput,
 	SubmitButton,
 	TextInput,
-	BackButton,
+	BackButton,PasswordInput
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
 import { createManagerAction } from "@/actions/manager-actions";
-import PasswordInput from "@/components/common/form-fields/password-input";
 
 const ManagerCreateForm = () => {
 	const [state, dispatch] = useFormState(createManagerAction, initialResponse);

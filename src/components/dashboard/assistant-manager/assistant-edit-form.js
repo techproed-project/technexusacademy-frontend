@@ -10,12 +10,11 @@ import {
 	SelectInput,
 	SubmitButton,
 	TextInput,
-	BackButton,
+	BackButton,PasswordInput
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
 import { updateAssistantAction } from "@/actions/assistant-actions";
-import PasswordInput from "@/components/common/form-fields/password-input";
 
 const AssistantEditForm = ({ user }) => {
 	const [state, dispatch] = useFormState(
@@ -93,7 +92,7 @@ const AssistantEditForm = ({ user }) => {
 							name="phoneNumber"
 							className="mb-3"
 							label="Phone number"
-							defaultValue={user.phoneNumber}
+							value={user.phoneNumber}
 							error={state?.errors?.phoneNumber}
 						/>
 					</Col>
@@ -104,7 +103,7 @@ const AssistantEditForm = ({ user }) => {
 							name="ssn"
 							className="mb-3"
 							label="SSN"
-							defaultValue={user.ssn}
+							value={user.ssn}
 							error={state?.errors?.ssn}
 						/>
 					</Col>

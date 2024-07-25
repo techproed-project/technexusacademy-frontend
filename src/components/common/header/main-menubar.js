@@ -14,6 +14,7 @@ const MainMenubar = () => {
 			className="bg-body-tertiary shadow"
 			sticky="top"
 			collapseOnSelect
+			style={{ zIndex: 1000 }}
 		>
 			<Container>
 				<Logo />

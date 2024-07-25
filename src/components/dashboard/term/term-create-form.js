@@ -6,11 +6,11 @@ import { initialResponse } from "@/helpers/form-validation";
 import { config } from "@/helpers/config";
 import { useFormState } from "react-dom";
 import {
-	MaskedInput,
 	SelectInput,
 	SubmitButton,
 	TextInput,
 	BackButton,
+	DateInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
@@ -42,29 +42,30 @@ const TermCreateForm = () => {
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="date"
+						<DateInput
 							name="startDate"
 							className="mb-3"
 							label="Start Date"
+							minDate={new Date()}
+							dateFormat="yy-mm-dd"
 							error={state?.errors?.startDate}
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="date"
+						<DateInput
 							name="endDate"
 							className="mb-3"
 							label="End Date"
+							dateFormat="yy-mm-dd"
 							error={state?.errors?.endDate}
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="date"
+						<DateInput
 							name="lastRegistrationDate"
 							className="mb-3"
 							label="Last Registration Date"
+							dateFormat="yy-mm-dd"
 							error={state?.errors?.lastRegistrationDate}
 						/>
 					</Col>

@@ -12,10 +12,10 @@ import {
 	SubmitButton,
 	TextInput,
 	BackButton,
+	PasswordInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
-import PasswordInput from "@/components/common/form-fields/password-input";
 
 const AdminCreateForm = () => {
 	const [state, dispatch] = useFormState(createAdminAction, initialResponse);
@@ -125,7 +125,7 @@ const AdminCreateForm = () => {
 					</Col>
 				</Row>
 
-				<BackButton className="me-3"/>
+				<BackButton className="me-3" />
 				<SubmitButton title="Create" />
 			</Form>
 		</FormContainer>
