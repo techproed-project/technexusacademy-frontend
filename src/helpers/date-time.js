@@ -12,6 +12,10 @@ export const formatTimeLT = (time) => {
 	return moment(time, "HH:mm:ss").format("LT");
 };
 
+export const formatDateMY = (date) =>{
+	return moment(date).format("MMM YYYY")
+}
+
 export const isLater = (timeBefore, timeAfter) => {
 	const tb = moment(timeBefore);
 	const ta = moment(timeAfter);

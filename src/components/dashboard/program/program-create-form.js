@@ -14,59 +14,78 @@ import {
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
-import { createTermAction } from "@/actions/term-actions";
+import { createProgramAction } from "@/actions/program-actions";
+import MultipleSelect from "@/components/common/form-fields/multiple-select";
 
-const TermCreateForm = () => {
-	const [state, dispatch] = useFormState(createTermAction, initialResponse);
+const ProgramCreateForm = ({ lessons, terms }) => {
+	const [state, dispatch] = useFormState(
+		createProgramAction,
+		initialResponse
+	);
 	const router = useRouter();
 
 	if (state.message) {
 		swAlert(state.message, state.ok ? "success" : "error");
-		if (state.ok) router.push("/dashboard/education-term");
+		if (state.ok) router.push("/dashboard/program");
 	}
+
+	console.log(state.errors)
 
 	return (
 		<FormContainer title="New">
 			<Form action={dispatch} noValidate>
 				<Row xs={1} md={2} xl={3}>
 					<Col>
+						<MultipleSelect
+							name="lessonIdList"
+							label="Lessons"
+							options={lessons}
+							optionValue="lessonId"
+							optionLabel="lessonName"
+							className="mb-3"
+							error={state?.errors?.lessonIdList}
+						/>
+					</Col>
+					<Col>
 						<SelectInput
-							name="term"
+							name="educationTermId"
 							className="mb-3"
 							label="Term"
-							options={config.educationTerms}
+							options={terms}
 							optionValue="value"
 							optionLabel="label"
 							defaultValue=""
-							error={state?.errors?.term}
+							error={state?.errors?.educationTermId}
+						/>
+					</Col>
+					<Col>
+						<SelectInput
+							name="day"
+							className="mb-3"
+							label="Day"
+							options={config.days}
+							optionValue="value"
+							optionLabel="label"
+							defaultValue=""
+							error={state?.errors?.day}
 						/>
 					</Col>
 					<Col>
 						<DateInput
-							name="startDate"
+							name="startTime"
 							className="mb-3"
-							label="Start Date"
-							minDate={new Date()}
-							dateFormat="yy-mm-dd"
-							error={state?.errors?.startDate}
+							label="Start Time"
+							timeOnly
+							error={state?.errors?.startTime}
 						/>
 					</Col>
 					<Col>
 						<DateInput
-							name="endDate"
+							name="stopTime"
 							className="mb-3"
-							label="End Date"
-							dateFormat="yy-mm-dd"
-							error={state?.errors?.endDate}
-						/>
-					</Col>
-					<Col>
-						<DateInput
-							name="lastRegistrationDate"
-							className="mb-3"
-							label="Last Registration Date"
-							dateFormat="yy-mm-dd"
-							error={state?.errors?.lastRegistrationDate}
+							label="End Time"
+							timeOnly
+							error={state?.errors?.stopTime}
 						/>
 					</Col>
 				</Row>
@@ -78,4 +97,4 @@ const TermCreateForm = () => {
 	);
 };
 
-export default TermCreateForm;
+export default ProgramCreateForm;

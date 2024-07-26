@@ -1,5 +1,6 @@
 import * as Yup from "yup";
 import { getDayValues } from "../misc";
+import { isLater } from "../date-time";
 
 export const ProgramSchema = Yup.object({
 	lessonIdList: Yup.string()
