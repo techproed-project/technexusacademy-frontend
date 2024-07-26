@@ -17,8 +17,8 @@ export const formatDateMY = (date) =>{
 }
 
 export const isLater = (timeBefore, timeAfter) => {
-	const tb = moment(timeBefore);
-	const ta = moment(timeAfter);
+	const tb = moment(timeBefore, "HH:mm");
+	const ta = moment(timeAfter, "HH:mm");
 
 	return ta.isAfter(tb);
 };

@@ -39,3 +39,11 @@ export const PROGRAM_GET_TEACHER_API = `${config.apiURL}/lessonPrograms/getAllLe
 export const PROGRAM_GET_STUDENT_API = `${config.apiURL}/lessonPrograms/getAllLessonProgramByStudent`;
 export const PROGRAM_DELETE_API = `${config.apiURL}/lessonPrograms/delete`;
 export const PROGRAM_CREATE_API = `${config.apiURL}/lessonPrograms/save`;
+
+export const TEACHER_GET_ALL_BY_PAGE_API = `${config.apiURL}/teachers/search`;
+export const TEACHER_GET_ALL_API = `${config.apiURL}/teachers/getAll`;
+export const TEACHER_GET_BY_ID_API = `${config.apiURL}/teachers/getSavedTeacherById`;
+export const TEACHER_CREATE_API = `${config.apiURL}/teachers/save`;
+export const TEACHER_DELETE_API = `${config.apiURL}/teachers/delete`;
+export const TEACHER_UPDATE_API = `${config.apiURL}/teachers/update`;
+export const TEACHER_ASSIGN_PROGRAM_API = `${config.apiURL}/teachers/chooseLesson`;
