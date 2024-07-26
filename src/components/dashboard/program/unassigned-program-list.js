@@ -6,11 +6,18 @@ import { Column } from "primereact/column";
 import { config } from "@/helpers/config";
 import { formatTimeLT } from "@/helpers/date-time";
 import Spacer from "@/components/common/spacer";
+import { SelectInput, SubmitButton } from "@/components/common/form-fields";
+import { useFormState } from "react-dom";
+import { assignProgramToTeacherAction } from "@/actions/teacher-actions";
+import { initialResponse } from "@/helpers/form-validation";
 
 const UnassignedProgramList = ({ programs, teachers }) => {
 	const [selectedItems, setSelectedItems] = useState([]);
 
-	console.log(selectedItems)
+	const [state, dispatch] = useFormState(
+		assignProgramToTeacherAction,
+		initialResponse
+	);
 
 	const header = (
 		<div>
@@ -29,6 +36,8 @@ const UnassignedProgramList = ({ programs, teachers }) => {
 	const formatStart = (row) => formatTimeLT(row.startTime);
 	const formatEnd = (row) => formatTimeLT(row.stopTime);
 
+	console.log(state);
+
 	return (
 		<Container>
 			<DataTable
@@ -40,6 +49,9 @@ const UnassignedProgramList = ({ programs, teachers }) => {
 				stripedRows
 				showGridlines
 				header={header}
+				className={
+					state?.errors?.lessonProgramId ? "border-danger border" : ""
+				}
 			>
 				<Column
 					selectionMode="multiple"
@@ -56,14 +68,34 @@ const UnassignedProgramList = ({ programs, teachers }) => {
 				<Column body={formatEnd} header="End" />
 			</DataTable>
 
+			{state?.errors?.lessonProgramId ? (
+				<div className="text-danger mt-2">{state?.errors?.lessonProgramId}</div>
+			) : null}
 
-			<Spacer/>
+			<Spacer height={50} />
 
-			<Form action="" noValidate>
+			<Form action={dispatch} noValidate>
+				<input
+					type="hidden"
+					name="lessonProgramId"
+					value={JSON.stringify(selectedItems)}
+				/>
 
+				<div className="d-flex align-items-end gap-2">
+					<SelectInput
+						name="teacherId"
+						options={teachers}
+						optionLabel="label"
+						optionValue="value"
+						defaultValue=""
+						label="Teacher"
+						className="flex-1"
+						error={state?.errors?.teacherId}
+					/>
+
+					<SubmitButton title="Assign" />
+				</div>
 			</Form>
-
-
 		</Container>
 	);
 };

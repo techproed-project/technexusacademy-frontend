@@ -22,7 +22,10 @@ const Page = async ({ searchParams }) => {
 		dataTeachers,
 	]);
 
-	console.log(unassignedPrograms);
+	const newTeachers = teachers.map((item) => ({
+		value: item.userId,
+		label: `${item.name} ${item.surname}`,
+	}));
 
 	return (
 		<>
@@ -32,7 +35,7 @@ const Page = async ({ searchParams }) => {
 			<Spacer />
 			<UnassignedProgramList
 				programs={unassignedPrograms}
-				teachers={teachers}
+				teachers={newTeachers}
 			/>
 			<Spacer />
 		</>
