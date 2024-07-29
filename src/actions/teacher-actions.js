@@ -84,7 +84,6 @@ export const deleteTeacherAction = async (id) => {
 export const assignProgramToTeacherAction = async (prevState, formData) => {
 	try {
 		const fields = convertFormDataToJSON(formData);
-
 	
 		ProgramAssignmentSchema.validateSync(fields, { abortEarly: false });
 
@@ -96,12 +95,8 @@ export const assignProgramToTeacherAction = async (prevState, formData) => {
 		};
 
 
-		console.log("OK");
 		const res = await assignProgramToTeacher(payload);
-		console.log(res);
 		const data = await res.json();
-
-		console.log(data);
 
 		if (!res.ok) {
 			return response(false, data?.message);

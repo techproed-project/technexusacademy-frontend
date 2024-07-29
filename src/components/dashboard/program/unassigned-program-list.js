@@ -10,6 +10,7 @@ import { SelectInput, SubmitButton } from "@/components/common/form-fields";
 import { useFormState } from "react-dom";
 import { assignProgramToTeacherAction } from "@/actions/teacher-actions";
 import { initialResponse } from "@/helpers/form-validation";
+import { swAlert } from "@/helpers/swal";
 
 const UnassignedProgramList = ({ programs, teachers }) => {
 	const [selectedItems, setSelectedItems] = useState([]);
@@ -36,7 +37,9 @@ const UnassignedProgramList = ({ programs, teachers }) => {
 	const formatStart = (row) => formatTimeLT(row.startTime);
 	const formatEnd = (row) => formatTimeLT(row.stopTime);
 
-	console.log(state);
+	if (state?.message) {
+		swAlert(state.message, state?.ok ? "success" : "error");
+	}
 
 	return (
 		<Container>
@@ -69,7 +72,9 @@ const UnassignedProgramList = ({ programs, teachers }) => {
 			</DataTable>
 
 			{state?.errors?.lessonProgramId ? (
-				<div className="text-danger mt-2">{state?.errors?.lessonProgramId}</div>
+				<div className="text-danger mt-2">
+					{state?.errors?.lessonProgramId}
+				</div>
 			) : null}
 
 			<Spacer height={50} />

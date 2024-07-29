@@ -4,6 +4,6 @@ import { isStringArray } from "../form-validation";
 export const ProgramAssignmentSchema = Yup.object({
 	teacherId: Yup.string().required("Required"),
 	lessonProgramId: Yup.string().test("isArray", "Required", (val) => {
-		isStringArray(val);
+		return isStringArray(val);
 	}),
 });
