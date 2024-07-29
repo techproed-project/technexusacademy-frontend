@@ -47,3 +47,15 @@ export const TEACHER_CREATE_API = `${config.apiURL}/teachers/save`;
 export const TEACHER_DELETE_API = `${config.apiURL}/teachers/delete`;
 export const TEACHER_UPDATE_API = `${config.apiURL}/teachers/update`;
 export const TEACHER_ASSIGN_PROGRAM_API = `${config.apiURL}/teachers/chooseLesson`;
+
+export const ADVISOR_GET_ALL_API = `${config.apiURL}/advisorTeacher/getAll`;
+
+
+export const STUDENT_GET_ALL_BY_PAGE_API = `${config.apiURL}/students/search`;
+export const STUDENT_GET_ALL_API = `${config.apiURL}/students/getAll`;
+export const STUDENT_GET_ALL_BY_ADVISOR_API = `${config.apiURL}/students/getAllByAdvisor`;
+export const STUDENT_GET_BY_ID_API = `${config.apiURL}/students/getStudentById`;
+export const STUDENT_CREATE_API = `${config.apiURL}/students/save`;
+export const STUDENT_DELETE_API = `${config.apiURL}/students/delete`;
+export const STUDENT_UPDATE_API = `${config.apiURL}/students/update`;
+export const STUDENT_ASSIGN_PROGRAM_API = `${config.apiURL}/students/chooseLesson`;

@@ -1,24 +1,22 @@
 import PageHeader from "@/components/common/page-header";
 import Spacer from "@/components/common/spacer";
-import TeacherList from "@/components/dashboard/teacher/teacher-list";
-import { getAllTeachersByPage } from "@/services/teacher-service";
+import StudentList from "@/components/dashboard/student/student-list";
+import { getAllStudentsByPage } from "@/services/student-service";
 import React from "react";
 
 const Page = async ({ searchParams }) => {
 	const { page } = searchParams;
 
-	const res = await getAllTeachersByPage(page);
+	const res = await getAllStudentsByPage(page);
 	const data = await res.json();
-
-	console.log(data)
 
 	if (!res.ok) throw new Error(data.message);
 
 	return (
 		<>
-			<PageHeader title="Teacher" />
+			<PageHeader title="Student" />
 			<Spacer />
-			<TeacherList data={data}/>
+			<StudentList data={data} />
 			<Spacer />
 		</>
 	);

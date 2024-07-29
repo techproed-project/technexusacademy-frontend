@@ -10,50 +10,48 @@ import {
 	SelectInput,
 	SubmitButton,
 	TextInput,
-	BackButton,PasswordInput
+	BackButton,
+	PasswordInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
-import { updateManagerAction } from "@/actions/manager-actions";
+import { createStudentAction } from "@/actions/student-actions";
 
-const ManagerEditForm = ({ user }) => {
+const StudentCreateForm = ({ advisorTeachers }) => {
 	const [state, dispatch] = useFormState(
-		updateManagerAction,
+		createStudentAction,
 		initialResponse
 	);
 	const router = useRouter();
 
 	if (state.message) {
 		swAlert(state.message, state.ok ? "success" : "error");
-		if (state.ok) router.push("/dashboard/manager");
+		if (state.ok) router.push("/dashboard/student");
 	}
 
 	return (
-		<FormContainer title="Edit">
+		<FormContainer title="New">
 			<Form action={dispatch} noValidate>
-				<input type="hidden" name="id" value={user.userId} />
-				<Row xs={1} md={2} xl={3}>
-					<Col>
+				<Row>
+					<Col md={6} lg={4}>
 						<TextInput
 							type="text"
 							name="name"
 							className="mb-3"
 							label="First name"
-							defaultValue={user.name}
 							error={state?.errors?.name}
 						/>
 					</Col>
-					<Col>
+					<Col md={6} lg={4}>
 						<TextInput
 							type="text"
 							name="surname"
 							className="mb-3"
 							label="Last name"
-							defaultValue={user.surname}
 							error={state?.errors?.surname}
 						/>
 					</Col>
-					<Col>
+					<Col md={6} lg={4}>
 						<SelectInput
 							name="gender"
 							className="mb-3"
@@ -61,63 +59,98 @@ const ManagerEditForm = ({ user }) => {
 							options={config.genders}
 							optionValue="value"
 							optionLabel="label"
-							defaultValue={user.gender}
+							defaultValue=""
 							error={state?.errors?.gender}
 						/>
 					</Col>
-					<Col>
+					<Col md={6} lg={4}>
 						<TextInput
 							type="date"
 							name="birthDay"
 							className="mb-3"
 							label="Date of birth"
-							defaultValue={user.birthDay}
 							error={state?.errors?.birthDay}
 						/>
 					</Col>
-					<Col>
+					<Col md={6} lg={4}>
 						<TextInput
 							type="text"
 							name="birthPlace"
 							className="mb-3"
 							label="Place of birth"
-							defaultValue={user.birthPlace}
-							error={state?.errors?.birthPlace}
+							error={state?.errors?.birthDay}
 						/>
 					</Col>
-					<Col>
+					<Col md={6} lg={4}>
 						<MaskedInput
 							type="text"
 							mask="999-999-9999"
 							name="phoneNumber"
 							className="mb-3"
 							label="Phone number"
-							value={user.phoneNumber}
 							error={state?.errors?.phoneNumber}
 						/>
 					</Col>
-					<Col>
+					<Col md={6} lg={4}>
 						<MaskedInput
 							type="text"
 							mask="999-99-9999"
 							name="ssn"
 							className="mb-3"
 							label="SSN"
-							value={user.ssn}
 							error={state?.errors?.ssn}
 						/>
 					</Col>
-					<Col>
+					<Col md={6} lg={4}>
+						<TextInput
+							type="text"
+							name="email"
+							className="mb-3"
+							label="Email"
+							error={state?.errors?.email}
+						/>
+					</Col>
+					<Col md={6} lg={4}>
+						<TextInput
+							type="text"
+							name="motherName"
+							className="mb-3"
+							label="Mother"
+							error={state?.errors?.motherName}
+						/>
+					</Col>
+					<Col md={6} lg={4}>
+						<TextInput
+							type="text"
+							name="fatherName"
+							className="mb-3"
+							label="Father"
+							error={state?.errors?.fatherName}
+						/>
+					</Col>
+					<Col md={6} lg={4}>
+						<SelectInput
+							name="advisorTeacherId"
+							className="mb-3"
+							label="Advisor"
+							error={state?.errors?.advisorTeacherId}
+							options={advisorTeachers}
+							optionLabel="label"
+							optionValue="value"
+							defaultValue=""
+						/>
+					</Col>
+
+					<Col md={6} lg={4}>
 						<TextInput
 							type="text"
 							name="username"
 							className="mb-3"
 							label="Username"
-							defaultValue={user.username}
 							error={state?.errors?.username}
 						/>
 					</Col>
-					<Col>
+					<Col md={6} lg={4}>
 						<PasswordInput
 							name="password"
 							className="mb-3"
@@ -125,7 +158,7 @@ const ManagerEditForm = ({ user }) => {
 							error={state?.errors?.password}
 						/>
 					</Col>
-					<Col>
+					<Col md={6} lg={4}>
 						<PasswordInput
 							name="confirmPassword"
 							className="mb-3"
@@ -136,10 +169,10 @@ const ManagerEditForm = ({ user }) => {
 				</Row>
 
 				<BackButton className="me-3" />
-				<SubmitButton title="Update" />
+				<SubmitButton title="Create" />
 			</Form>
 		</FormContainer>
 	);
 };
 
-export default ManagerEditForm;
+export default StudentCreateForm;

@@ -1,10 +1,9 @@
 import * as Yup from "yup";
 import { getGenderValues } from "../misc";
-import { isStringArray } from "../form-validation";
 
 const genders = getGenderValues();
 
-export const TeacherSchema = Yup.object({
+export const StudentSchema = Yup.object({
 	name: Yup.string().required("Required"),
 	surname: Yup.string().required("Required"),
 	gender: Yup.string().oneOf(genders, "Invalid gender").required("Required"),
@@ -20,9 +19,11 @@ export const TeacherSchema = Yup.object({
 		.matches(/\d{3}-\d{2}-\d{4}/, "Invalid format. (###-##-####)")
 		.required("Required"),
 	email: Yup.string().email("Invalid email").required("Required"),
-	lessonsIdList: Yup.string().test("isArray", "Required", (val) => {
-		return isStringArray(val);
-	}),
+	email: Yup.string().email("Invalid email").required("Required"),
+	email: Yup.string().email("Invalid email").required("Required"),
+	advisorTeacherId: Yup.string().required("Required"),
+	fatherName: Yup.string().required("Required"),
+	motherName: Yup.string().required("Required"),
 	username: Yup.string().required("Required"),
 	password: Yup.string()
 		.min(8, "Min 8 chars")
@@ -34,4 +35,10 @@ export const TeacherSchema = Yup.object({
 		[Yup.ref("password")],
 		"Passwords don't match"
 	),
+});
+
+export const ChooseLessonSchema = Yup.object({
+	lessonProgramId: Yup.string().test("isArray", "Required", (val) => {
+		return isStringArray(val);
+	}),
 });

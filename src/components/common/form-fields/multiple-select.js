@@ -1,10 +1,10 @@
 "use client";
 import { MultiSelect } from "primereact/multiselect";
 import React, { useState } from "react";
-import { FormControl, FormGroup, FormLabel } from "react-bootstrap";
+import { FormGroup, FormLabel } from "react-bootstrap";
 
-const MultipleSelect = ({ name, error, label, className, ...rest }) => {
-	const [selectedItems, setSelectedItems] = useState([]);
+const MultipleSelect = ({ name, error, label, className, values, ...rest }) => {
+	const [selectedItems, setSelectedItems] = useState(values || []);
 
 	return (
 		<FormGroup className={className} controlId={rest.name}>
@@ -17,13 +17,13 @@ const MultipleSelect = ({ name, error, label, className, ...rest }) => {
 			<div>
 				<MultiSelect
 					{...rest}
-                    invalid={!!error}
+					invalid={!!error}
 					className="w-100"
 					value={selectedItems}
 					onChange={(e) => setSelectedItems(e.value)}
 				/>
 			</div>
-			<FormControl.Feedback type="invalid">{error}</FormControl.Feedback>
+			{error ? <div className="invalid-feedback d-block">{error}</div> : null}
 		</FormGroup>
 	);
 };
