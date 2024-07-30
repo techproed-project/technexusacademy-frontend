@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Nav, Offcanvas } from "react-bootstrap";
 import userMenuData from "@/helpers/data/user-menu.json";
 import { useRouter } from "next/navigation";
+import LogoutButton from "./logout-button";
 
 const UserMenuAuth = ({ session }) => {
 	const [show, setShow] = useState(false);
@@ -48,6 +49,7 @@ const UserMenuAuth = ({ session }) => {
 								{item.title}
 							</Button>
 						))}
+						<LogoutButton/>
 					</Nav>
 				</Offcanvas.Body>
 			</Offcanvas>

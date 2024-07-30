@@ -10,6 +10,8 @@ const Page = async ({ searchParams }) => {
 	const res = await getAllAdminsByPage(page);
 	const data = await res.json();
 
+	console.log(res)
+
 	if (!res.ok) throw new Error(data.message);
 
 	return (

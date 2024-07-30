@@ -1,3 +1,4 @@
+import LogoutButton from "@/components/common/header/logout-button";
 import Spacer from "@/components/common/spacer";
 import Image from "next/image";
 import React from "react";
@@ -29,7 +30,10 @@ const Page = () => {
 							the system administrator.
 						</p>
 
-						
+						<LogoutButton
+							variant="outline"
+							className="btn btn-outline-secondary btn-lg"
+						/>
 					</Col>
 				</Row>
 			</Container>
