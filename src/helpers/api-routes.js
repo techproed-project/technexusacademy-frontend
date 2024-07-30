@@ -60,3 +60,11 @@ export const STUDENT_CREATE_API = `${config.apiURL}/students/save`;
 export const STUDENT_DELETE_API = `${config.apiURL}/students/delete`;
 export const STUDENT_UPDATE_API = `${config.apiURL}/students/update`;
 export const STUDENT_ASSIGN_PROGRAM_API = `${config.apiURL}/students/chooseLesson`;
+
+
+export const STUDENTINFO_GET_BY_TEACHER_API = `${config.apiURL}/studentInfo/getAllForTeacher`;
+export const STUDENTINFO_GET_BY_STUDENT_API = `${config.apiURL}/studentInfo/getAllByStudent`;
+export const STUDENTINFO_GET_BY_ID_API = `${config.apiURL}/studentInfo/get`;
+export const STUDENTINFO_CREATE_API = `${config.apiURL}/studentInfo/save`;
+export const STUDENTINFO_UPDATE_API = `${config.apiURL}/studentInfo/update`;
+export const STUDENTINFO_DELETE_API = `${config.apiURL}/studentInfo/delete`;
