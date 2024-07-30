@@ -1,36 +1,33 @@
 import PageHeader from "@/components/common/page-header";
 import Spacer from "@/components/common/spacer";
-import TeacherEditForm from "@/components/dashboard/teacher/teacher-edit-form";
-import { getAllPrograms } from "@/services/program-service";
-import { getTeacherById } from "@/services/teacher-service";
+import StudentEditForm from "@/components/dashboard/student/student-edit-form";
+import { getAllAdvisorTeachers } from "@/services/advisor-service";
+import { getStudentById } from "@/services/student-service";
 import React from "react";
 
 const Page = async ({ params }) => {
 	const { id } = params;
 	if (!id) throw new Error("User id is missing");
 
-	const dataTeacher = (await getTeacherById(id)).json();
-	const dataPrograms = (await getAllPrograms(id)).json();
+	const dataStudent = (await getStudentById(id)).json();
+	const dataAdvisors = (await getAllAdvisorTeachers()).json();
 
-	const [teacher, programs] = await Promise.all([dataTeacher, dataPrograms]);
+	const [student, advisors] = await Promise.all([dataStudent, dataAdvisors]);
 
-	const newPrograms = programs.map((item) => ({
-		id: item.lessonProgramId,
-		label: item.lessonName.map((lesson) => lesson.lessonName).join(" - "),
+	const advisorTeachers = advisors.map((item) => ({
+		value: item.advisorTeacherId,
+		label: `${item.teacherName} ${item.teacherSurname}`,
 	}));
 
-	const teacherProgramIds = teacher.object.lessonsProgramList.map(
-		(item) => item.id
-	);
+	console.log(student)
 
 	return (
 		<>
-			<PageHeader title="Edit Teacher" />
+			<PageHeader title="Edit Student" />
 			<Spacer />
-			<TeacherEditForm
-				user={teacher.object}
-				programs={newPrograms}
-				teacherProgramIds={teacherProgramIds}
+			<StudentEditForm
+				user={student}
+				advisorTeachers={advisorTeachers}
 			/>
 			<Spacer />
 		</>

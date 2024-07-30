@@ -20,8 +20,6 @@ export const createTeacherAction = async (prevState, formData) => {
 	try {
 		const fields = convertFormDataToJSON(formData);
 
-		console.log(fields)
-
 		TeacherSchema.validateSync(fields, { abortEarly: false });
 
 		const payload = { 

@@ -7,7 +7,7 @@ import {
 	YupValiationError,
 } from "@/helpers/form-validation";
 import { ChooseLessonSchema, StudentSchema } from "@/helpers/schemas/student-schema";
-import { createStudent, deleteStudent } from "@/services/student-service";
+import { createStudent, deleteStudent, updateStudent } from "@/services/student-service";
 
 import { revalidatePath } from "next/cache";
 
@@ -46,7 +46,7 @@ export const updateStudentAction = async (prevState, formData) => {
 
 		StudentSchema.validateSync(fields, { abortEarly: false });
 
-		const res = await updateTeacher(fields);
+		const res = await updateStudent(fields);
 		const data = await res.json();
 
 		if (!res.ok) {

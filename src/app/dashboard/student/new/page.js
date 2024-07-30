@@ -9,13 +9,13 @@ const Page = async () => {
 	const data = await res.json();
 
 	const advisorTeachers = data.map((item) => ({
-		id: item.advisorTeacherId,
+		value: item.advisorTeacherId,
 		label: `${item.teacherName} ${item.teacherSurname}`,
 	}));
 
 	return (
 		<>
-			<PageHeader title="New Teacher" />
+			<PageHeader title="New Student" />
 			<Spacer />
 			<StudentCreateForm advisorTeachers={advisorTeachers} />
 			<Spacer />

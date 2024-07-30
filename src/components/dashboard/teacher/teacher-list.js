@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import TeacherToolbar from "./teacher-toolbar";
 
 const TeacherList = ({ data }) => {
-	console.log(data)
 	const router = useRouter();
 
 	const { content, pageable, totalElements, number } = data;

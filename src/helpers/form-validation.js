@@ -24,6 +24,5 @@ export const transformYupErrors = (errors) => {
 export const isStringArray = (str) => {
 	if (!str) return false;
 	const arr = JSON.parse(str);
-	console.log(arr)
 	return Array.isArray(arr) && arr.length > 0;
 };

@@ -29,8 +29,6 @@ const ProgramCreateForm = ({ lessons, terms }) => {
 		if (state.ok) router.push("/dashboard/program");
 	}
 
-	console.log(state.errors)
-
 	return (
 		<FormContainer title="New">
 			<Form action={dispatch} noValidate>

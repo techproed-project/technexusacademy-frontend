@@ -12,7 +12,6 @@ import {
 	TextInput,
 	BackButton,
 	PasswordInput,
-	CheckInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";

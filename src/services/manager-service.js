@@ -35,7 +35,6 @@ export const createManager = async (payload) => {
 };
 
 export const updateManager = async (payload) => {
-	console.log("HELLO")
 	return fetch(`${MANAGER_UPDATE_API}/${payload.id}`, {
 		method: "put",
 		body: JSON.stringify(payload),

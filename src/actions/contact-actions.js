@@ -23,7 +23,7 @@ export const createContactAction = async (prevData, formData) => {
 			return response(false, "", data?.validations);
 		}
 
-		// revalidatePath("/dashboard/contact-message");
+		revalidatePath("/dashboard/contact-message");
 		return response(true, "Your message was sent");
 	} catch (err) {
 		if (err instanceof YupValiationError) {
