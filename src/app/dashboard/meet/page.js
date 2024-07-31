@@ -1,22 +1,22 @@
 import PageHeader from "@/components/common/page-header";
 import Spacer from "@/components/common/spacer";
-import TeacherList from "@/components/dashboard/teacher/teacher-list";
-import { getAllTeachersByPage } from "@/services/teacher-service";
+import MeetList from "@/components/dashboard/meet/meet-list";
+import { getAllMeetsByPageForAdvisor } from "@/services/meet-service";
 import React from "react";
 
 const Page = async ({ searchParams }) => {
 	const { page } = searchParams;
 
-	const res = await getAllTeachersByPage(page);
+	const res = await getAllMeetsByPageForAdvisor(page);
 	const data = await res.json();
 
 	if (!res.ok) throw new Error(data.message);
 
 	return (
 		<>
-			<PageHeader title="Teacher" />
+			<PageHeader title="Meet" />
 			<Spacer />
-			<TeacherList data={data}/>
+			<MeetList data={data} />
 			<Spacer />
 		</>
 	);

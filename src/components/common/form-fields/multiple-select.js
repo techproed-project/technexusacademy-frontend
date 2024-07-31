@@ -13,6 +13,8 @@ const MultipleSelect = ({ name, error, label, className, values, ...rest }) => {
 				name={name}
 				value={JSON.stringify(selectedItems)}
 			/>
+
+			
 			<FormLabel>{label}</FormLabel>
 			<div>
 				<MultiSelect

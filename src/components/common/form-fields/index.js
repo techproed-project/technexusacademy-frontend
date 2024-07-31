@@ -6,6 +6,7 @@ import BackButton from "./back-button";
 import PasswordInput from "./password-input";
 import DateInput from "./date-input";
 import CheckInput from "./check-input";
+import MultipleSelect from "./multiple-select";
 
 export {
 	TextInput,
@@ -16,4 +17,5 @@ export {
 	PasswordInput,
 	DateInput,
 	CheckInput,
+	MultipleSelect
 };

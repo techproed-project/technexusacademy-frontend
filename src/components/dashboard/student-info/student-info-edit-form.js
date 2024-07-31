@@ -3,20 +3,23 @@ import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import FormContainer from "../common/form-container";
 import { initialResponse } from "@/helpers/form-validation";
+import { config } from "@/helpers/config";
 import { useFormState } from "react-dom";
 import {
+	MaskedInput,
 	SelectInput,
 	SubmitButton,
 	TextInput,
 	BackButton,
+	PasswordInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
-import { createStudentInfoAction } from "@/actions/student-info-actions";
+import { updateStudentInfoAction } from "@/actions/student-info-actions";
 
-const StudentInfoCreateForm = ({ students, lessons, terms }) => {
+const StudentInfoEditForm = ({ studentInfo, students, lessons, terms }) => {
 	const [state, dispatch] = useFormState(
-		createStudentInfoAction,
+		updateStudentInfoAction,
 		initialResponse
 	);
 	const router = useRouter();
@@ -27,8 +30,9 @@ const StudentInfoCreateForm = ({ students, lessons, terms }) => {
 	}
 
 	return (
-		<FormContainer title="New">
+		<FormContainer title="Edit">
 			<Form action={dispatch} noValidate>
+				<input type="hidden" name="id" value={studentInfo.id} />
 				<Row xs={1} md={2} xl={3}>
 					<Col>
 						<SelectInput
@@ -38,7 +42,7 @@ const StudentInfoCreateForm = ({ students, lessons, terms }) => {
 							options={lessons}
 							optionValue="lessonId"
 							optionLabel="lessonName"
-							defaultValue=""
+							defaultValue={studentInfo.lessonId}
 							error={state?.errors?.lessonId}
 						/>
 					</Col>
@@ -50,7 +54,7 @@ const StudentInfoCreateForm = ({ students, lessons, terms }) => {
 							options={students}
 							optionValue="value"
 							optionLabel="label"
-							defaultValue=""
+							defaultValue={studentInfo.studentResponse.userId}
 							error={state?.errors?.studentId}
 						/>
 					</Col>
@@ -62,7 +66,7 @@ const StudentInfoCreateForm = ({ students, lessons, terms }) => {
 							options={terms}
 							optionValue="value"
 							optionLabel="label"
-							defaultValue=""
+							defaultValue={studentInfo.educationTermId}
 							error={state?.errors?.educationTermId}
 						/>
 					</Col>
@@ -72,6 +76,7 @@ const StudentInfoCreateForm = ({ students, lessons, terms }) => {
 							name="absentee"
 							className="mb-3"
 							label="Absentee"
+							defaultValue={studentInfo.absentee}
 							error={state?.errors?.absentee}
 						/>
 					</Col>
@@ -81,6 +86,7 @@ const StudentInfoCreateForm = ({ students, lessons, terms }) => {
 							name="midtermExam"
 							className="mb-3"
 							label="Midterm"
+							defaultValue={studentInfo.midtermExam}
 							error={state?.errors?.midtermExam}
 						/>
 					</Col>
@@ -90,6 +96,7 @@ const StudentInfoCreateForm = ({ students, lessons, terms }) => {
 							name="finalExam"
 							className="mb-3"
 							label="Final"
+							defaultValue={studentInfo.finalExam}
 							error={state?.errors?.finalExam}
 						/>
 					</Col>
@@ -100,16 +107,17 @@ const StudentInfoCreateForm = ({ students, lessons, terms }) => {
 							name="infoNote"
 							className="mb-3"
 							label="Info"
+							defaultValue={studentInfo.infoNote}
 							error={state?.errors?.infoNote}
 						/>
 					</Col>
 				</Row>
 
 				<BackButton className="me-3" />
-				<SubmitButton title="Create" />
+				<SubmitButton title="Update" />
 			</Form>
 		</FormContainer>
 	);
 };
 
-export default StudentInfoCreateForm;
+export default StudentInfoEditForm;

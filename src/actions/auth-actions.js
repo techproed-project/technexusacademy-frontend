@@ -9,7 +9,7 @@ import {
 	YupValiationError,
 } from "@/helpers/form-validation";
 import { AuthSchema } from "@/helpers/schemas/auth-schema";
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 
 export const loginAction = async (prevState, formData) => {
 	try {
@@ -27,4 +27,8 @@ export const loginAction = async (prevState, formData) => {
 
 		throw err;
 	}
+};
+
+export const logoutAction = async () => {
+	await signOut({ redirect: true, redirectTo: "/" });
 };

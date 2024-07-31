@@ -1,15 +1,15 @@
 "use client";
+import { logoutAction } from "@/actions/auth-actions";
 import { swConfirm } from "@/helpers/swal";
 import React from "react";
 import { Button } from "react-bootstrap";
-import { signOut } from "next-auth/react";
 
 const LogoutButton = (props) => {
 	const handleLogout = async () => {
 		const res = await swConfirm("Are you sure to logout?");
 		if (!res.isConfirmed) return;
 
-		signOut({ callbackUrl: "/" });
+		await logoutAction();
 	};
 
 	return (

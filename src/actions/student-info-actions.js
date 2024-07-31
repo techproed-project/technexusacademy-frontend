@@ -51,6 +51,7 @@ export const updateStudentInfoAction = async (prevState, formData) => {
 		const data = await res.json();
 
 		if (!res.ok) {
+			
 			return response(false, data?.message);
 		}
 

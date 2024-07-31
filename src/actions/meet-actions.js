@@ -6,28 +6,29 @@ import {
 	transformYupErrors,
 	YupValiationError,
 } from "@/helpers/form-validation";
-import { AdminSchema } from "@/helpers/schemas/admin-schema";
-import {
-	createAssistant,
-	deleteAssistant,
-	updateAssistant,
-} from "@/services/assistant-service";
+import { MeetSchema } from "@/helpers/schemas/meet-schema";
+import { createMeet, deleteMeet, updateMeet } from "@/services/meet-service";
 import { revalidatePath } from "next/cache";
 
-export const createAssistantAction = async (prevState, formData) => {
+export const createMeetAction = async (prevState, formData) => {
 	try {
 		const fields = convertFormDataToJSON(formData);
 
-		AdminSchema.validateSync(fields, { abortEarly: false });
+		MeetSchema.validateSync(fields, { abortEarly: false });
 
-		const res = await createAssistant(fields);
+		const payload = {
+			...fields,
+			studentIds: JSON.parse(fields.studentIds)
+		}
+
+		const res = await createMeet(payload);
 		const data = await res.json();
 
 		if (!res.ok) {
 			return response(false, data?.message);
 		}
 
-		revalidatePath("/dashboard/assistant-manager");
+		revalidatePath("/dashboard/meet");
 		return response(true, data?.message);
 	} catch (err) {
 		if (err instanceof YupValiationError) {
@@ -38,24 +39,24 @@ export const createAssistantAction = async (prevState, formData) => {
 	}
 };
 
-export const updateAssistantAction = async (prevState, formData) => {
+export const updateMeetAction = async (prevState, formData) => {
 	if (!formData.get("id"))
 		throw new Error("Id is missing in update manager action");
 
 	try {
 		const fields = convertFormDataToJSON(formData);
 
-		AdminSchema.validateSync(fields, { abortEarly: false });
+		MeetSchema.validateSync(fields, { abortEarly: false });
 
-		const res = await updateAssistant(fields);
+		const res = await updateMeet(fields);
 		const data = await res.json();
 
 		if (!res.ok) {
 			return response(false, data?.message);
 		}
 
-		revalidatePath("/dashboard/assistant-manager");
-		revalidatePath(`/dashboard/assistant-manager/${fields.id}`);
+		revalidatePath("/dashboard/meet");
+		revalidatePath(`/dashboard/meet/${fields.id}`);
 		return response(true, data?.message);
 	} catch (err) {
 		if (err instanceof YupValiationError) {
@@ -66,16 +67,16 @@ export const updateAssistantAction = async (prevState, formData) => {
 	}
 };
 
-export const deleteAssistantAction = async (id) => {
+export const deleteMeetAction = async (id) => {
 	if (!id) throw new Error("Id is missing");
 
-	const res = await deleteAssistant(id);
+	const res = await deleteMeet(id);
 	const data = await res.json();
 
 	if (!res.ok) {
 		return response(false, data?.message);
 	}
 
-	revalidatePath("/dashboard/assistant-manager");
+	revalidatePath("/dashboard/meet");
 	return response(true, data?.message);
 };

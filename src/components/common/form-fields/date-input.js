@@ -1,7 +1,7 @@
 "use client";
 import { Calendar } from "primereact/calendar";
 import React, { useState } from "react";
-import { FormControl, FormGroup, FormLabel } from "react-bootstrap";
+import { FormGroup, FormLabel } from "react-bootstrap";
 
 const DateInput = ({ error, label, className, value, ...rest }) => {
 	const [val, setVal] = useState(value);
@@ -14,9 +14,12 @@ const DateInput = ({ error, label, className, value, ...rest }) => {
 					value={val}
 					onChange={(e) => setVal(e.value)}
 					className="form-control"
+					invalid={!!error}
 				/>
 			</div>
-			<FormControl.Feedback type="invalid">{error}</FormControl.Feedback>
+			{error ? (
+				<div className="invalid-feedback d-block">{error}</div>
+			) : null}
 		</FormGroup>
 	);
 };

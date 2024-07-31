@@ -18,5 +18,5 @@ export const StudentInfoSchema = Yup.object({
 		.min(0, "Min 0")
 		.max(100, "Max 100")
 		.required("Required"),
-	infoNote: Yup.string().required("Required"),
+	infoNote: Yup.string().min(10, "Min 10 chars").required("Required"),
 });

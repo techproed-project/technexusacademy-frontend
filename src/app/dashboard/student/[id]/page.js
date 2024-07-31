@@ -19,7 +19,6 @@ const Page = async ({ params }) => {
 		label: `${item.teacherName} ${item.teacherSurname}`,
 	}));
 
-	console.log(student)
 
 	return (
 		<>

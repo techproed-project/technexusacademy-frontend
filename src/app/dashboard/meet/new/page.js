@@ -1,24 +1,23 @@
 import PageHeader from "@/components/common/page-header";
 import Spacer from "@/components/common/spacer";
-import TeacherCreateForm from "@/components/dashboard/teacher/teacher-create-form";
-import { getAllPrograms } from "@/services/program-service";
+import MeetCreateForm from "@/components/dashboard/meet/meet-create-form";
+import { getAllStudentsByAdvisor } from "@/services/student-service";
 import React from "react";
 
 const Page = async () => {
-
-	const res = await getAllPrograms();
+	const res = await getAllStudentsByAdvisor();
 	const data = await res.json();
 
-	const programs = data.map(item=> ({
-		id: item.lessonProgramId,
-		label:item.lessonName.map(lesson=> lesson.lessonName).join(" - ")
-	}))
+	const students = data.map((item) => ({
+		value: item.userId,
+		label: `${item.name} ${item.surname}`,
+	}));
 
 	return (
 		<>
-			<PageHeader title="New Teacher" />
+			<PageHeader title="New Meet" />
 			<Spacer />
-			<TeacherCreateForm programs={programs} />
+			<MeetCreateForm students={students}/>
 			<Spacer />
 		</>
 	);

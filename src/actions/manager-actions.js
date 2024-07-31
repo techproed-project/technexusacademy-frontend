@@ -55,6 +55,7 @@ export const updateManagerAction = async (prevState, formData) => {
 		}
 
 		revalidatePath("/dashboard/manager");
+		revalidatePath(`/dashboard/manager/${fields.id}`);
 		return response(true, data?.message);
 	} catch (err) {
 		if (err instanceof YupValiationError) {
