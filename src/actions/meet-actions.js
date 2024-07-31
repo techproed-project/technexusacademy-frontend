@@ -18,8 +18,8 @@ export const createMeetAction = async (prevState, formData) => {
 
 		const payload = {
 			...fields,
-			studentIds: JSON.parse(fields.studentIds)
-		}
+			studentIds: JSON.parse(fields.studentIds),
+		};
 
 		const res = await createMeet(payload);
 		const data = await res.json();
@@ -48,7 +48,12 @@ export const updateMeetAction = async (prevState, formData) => {
 
 		MeetSchema.validateSync(fields, { abortEarly: false });
 
-		const res = await updateMeet(fields);
+		const payload = {
+			...fields,
+			studentIds: JSON.parse(fields.studentIds),
+		};
+
+		const res = await updateMeet(payload);
 		const data = await res.json();
 
 		if (!res.ok) {

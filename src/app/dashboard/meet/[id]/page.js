@@ -23,7 +23,7 @@ const Page = async ({ params }) => {
 
 	return (
 		<>
-			<PageHeader title="Edit Teacher" />
+			<PageHeader title="Edit Meet" />
 			<Spacer />
 			<MeetEditForm
 				meet={meet.object}

@@ -1,5 +1,6 @@
 import * as Yup from "yup";
 import { getGenderValues } from "../misc";
+import { isStringArray } from "../form-validation";
 
 const genders = getGenderValues();
 
