@@ -13,6 +13,7 @@ import {
 	BackButton,
 	PasswordInput,
 	CheckInput,
+	DateInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";

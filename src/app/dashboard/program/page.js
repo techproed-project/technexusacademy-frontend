@@ -29,7 +29,7 @@ const Page = async ({ searchParams }) => {
 
 	return (
 		<>
-			<PageHeader title="Programs" />
+			<PageHeader title="Program" />
 			<Spacer />
 			<ProgramList data={allPrograms} />
 			<Spacer />

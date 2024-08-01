@@ -2,7 +2,7 @@
 import React from "react";
 import { Container, Placeholder, Table } from "react-bootstrap";
 
-const LoadingList = () => {
+const LoadingList = ({ colCount = 4, rowCount = 5, showButton = true }) => {
 	return (
 		<Container>
 			<Placeholder
@@ -11,55 +11,41 @@ const LoadingList = () => {
 				style={{ height: "35px" }}
 			>
 				<Placeholder xs={3} />
-				<Placeholder xs={1} />
+				{showButton && <Placeholder xs={1} />}
 			</Placeholder>
 
 			<Table className="table-striped">
 				<thead>
 					<tr>
-						<Placeholder
-							animation="glow"
-							as="th"
-							style={{ width: "40px" }}
-						>
-							<Placeholder xs={12} />
-						</Placeholder>
-						<Placeholder animation="glow" as="th">
-							<Placeholder xs={12} />
-						</Placeholder>
-						<Placeholder animation="glow" as="th">
-							<Placeholder xs={12} />
-						</Placeholder>
-						<Placeholder animation="glow" as="th">
-							<Placeholder xs={12} />
-						</Placeholder>
-						<Placeholder animation="glow" as="th">
-							<Placeholder xs={12} />
-						</Placeholder>
+						{[...new Array(colCount)].map((_, index) => (
+							<Placeholder
+								key={index}
+								animation="glow"
+								as="th"
+								style={{ width: index === 0 ? "40px" : "auto" }}
+							>
+								<Placeholder xs={12} />
+							</Placeholder>
+						))}
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<Placeholder
-							animation="glow"
-							as="td"
-							style={{ width: "40px" }}
-						>
-							<Placeholder xs={12} />
-						</Placeholder>
-						<Placeholder animation="glow" as="td">
-							<Placeholder xs={12} />
-						</Placeholder>
-						<Placeholder animation="glow" as="td">
-							<Placeholder xs={12} />
-						</Placeholder>
-						<Placeholder animation="glow" as="td">
-							<Placeholder xs={12} />
-						</Placeholder>
-						<Placeholder animation="glow" as="td">
-							<Placeholder xs={12} />
-						</Placeholder>
-					</tr>
+					{[...new Array(rowCount)].map((_, indexRow) => (
+						<tr key={indexRow}>
+							{[...new Array(colCount)].map((_, indexCol) => (
+								<Placeholder
+									key={indexCol}
+									animation="glow"
+									as="th"
+									style={{
+										width: indexCol === 0 ? "40px" : "auto",
+									}}
+								>
+									<Placeholder xs={12} />
+								</Placeholder>
+							))}
+						</tr>
+					))}
 				</tbody>
 			</Table>
 		</Container>

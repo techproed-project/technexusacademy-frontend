@@ -16,7 +16,7 @@ const Page = async ({ searchParams }) => {
 
 	return (
 		<>
-			<PageHeader title="Messages" />
+			<PageHeader title="Message" />
 			<Spacer />
 			<MessageList data={data} />
 			<Spacer />
