@@ -20,7 +20,7 @@ const Page = () => {
 						/>
 					</Col>
 					<Col md={6} className="text-center text-md-start">
-						<h2>You're unauthorized</h2>
+						<h2>You`re unauthorized</h2>
 
 						<p>
 							It looks like you`re already logged in but you`re
