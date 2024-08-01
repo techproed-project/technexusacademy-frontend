@@ -19,7 +19,7 @@ import { useRouter } from "next/navigation";
 import { createTeacherAction } from "@/actions/teacher-actions";
 import MultipleSelect from "@/components/common/form-fields/multiple-select";
 
-const TeacherCreateForm = ({programs}) => {
+const TeacherCreateForm = ({ programs }) => {
 	const [state, dispatch] = useFormState(
 		createTeacherAction,
 		initialResponse
@@ -66,11 +66,12 @@ const TeacherCreateForm = ({programs}) => {
 						/>
 					</Col>
 					<Col md={6} lg={4}>
-						<TextInput
-							type="date"
+						<DateInput
 							name="birthDay"
 							className="mb-3"
 							label="Date of birth"
+							maxDate={new Date()}
+							dateFormat="yy-mm-dd"
 							error={state?.errors?.birthDay}
 						/>
 					</Col>

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { config } from "@/helpers/config";
@@ -10,6 +10,7 @@ import { assignProgramToStudentAction } from "@/actions/student-actions";
 import { initialResponse } from "@/helpers/form-validation";
 import { useFormState } from "react-dom";
 import Spacer from "@/components/common/spacer";
+import { swAlert } from "@/helpers/swal";
 
 const AllProgramList = ({ allPrograms }) => {
 	const [selectedItems, setSelectedItems] = useState([]);
@@ -40,6 +41,10 @@ const AllProgramList = ({ allPrograms }) => {
 		setSelectedItems(e.value);
 	};
 
+	if (state.message) {
+		swAlert(state.message, state.ok ? "success" : "error");
+	}
+
 	return (
 		<Container>
 			<Form noValidate action={dispatch}>
@@ -59,7 +64,9 @@ const AllProgramList = ({ allPrograms }) => {
 					selection={selectedItems}
 					onSelectionChange={handleSelection}
 					style={{
-						border: !state?.ok ? "1px solid red" : "none",
+						border: state?.errors?.lessonProgramId
+							? "1px solid red"
+							: "none",
 					}}
 				>
 					<Column
@@ -77,9 +84,9 @@ const AllProgramList = ({ allPrograms }) => {
 					<Column body={formatEnd} header="End" />
 				</DataTable>
 
-				{state?.errors?.lessonProgramId || state?.message ? (
+				{state?.errors?.lessonProgramId ? (
 					<div className="text-danger mt-2">
-						{state?.errors?.lessonProgramId || state?.message}
+						{state?.errors?.lessonProgramId}
 					</div>
 				) : null}
 

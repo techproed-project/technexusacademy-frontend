@@ -10,14 +10,19 @@ import {
 	SelectInput,
 	SubmitButton,
 	TextInput,
-	BackButton,PasswordInput
+	BackButton,
+	PasswordInput,
+	DateInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
 import { createManagerAction } from "@/actions/manager-actions";
 
 const ManagerCreateForm = () => {
-	const [state, dispatch] = useFormState(createManagerAction, initialResponse);
+	const [state, dispatch] = useFormState(
+		createManagerAction,
+		initialResponse
+	);
 	const router = useRouter();
 
 	if (state.message) {
@@ -60,11 +65,12 @@ const ManagerCreateForm = () => {
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="date"
+						<DateInput
 							name="birthDay"
 							className="mb-3"
 							label="Date of birth"
+							maxDate={new Date()}
+							dateFormat="yy-mm-dd"
 							error={state?.errors?.birthDay}
 						/>
 					</Col>
@@ -124,7 +130,7 @@ const ManagerCreateForm = () => {
 					</Col>
 				</Row>
 
-				<BackButton className="me-3"/>
+				<BackButton className="me-3" />
 				<SubmitButton title="Create" />
 			</Form>
 		</FormContainer>

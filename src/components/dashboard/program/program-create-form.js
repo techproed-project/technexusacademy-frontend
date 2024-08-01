@@ -8,9 +8,8 @@ import { useFormState } from "react-dom";
 import {
 	SelectInput,
 	SubmitButton,
-	TextInput,
 	BackButton,
-	DateInput,
+	TimeInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
@@ -69,20 +68,18 @@ const ProgramCreateForm = ({ lessons, terms }) => {
 						/>
 					</Col>
 					<Col>
-						<DateInput
+						<TimeInput
 							name="startTime"
 							className="mb-3"
 							label="Start Time"
-							timeOnly
 							error={state?.errors?.startTime}
 						/>
 					</Col>
 					<Col>
-						<DateInput
+						<TimeInput
 							name="stopTime"
 							className="mb-3"
 							label="End Time"
-							timeOnly
 							error={state?.errors?.stopTime}
 						/>
 					</Col>

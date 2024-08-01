@@ -13,6 +13,7 @@ import {
 	TextInput,
 	BackButton,
 	PasswordInput,
+	DateInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
@@ -61,11 +62,12 @@ const AdminCreateForm = () => {
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="date"
+						<DateInput
 							name="birthDay"
 							className="mb-3"
 							label="Date of birth"
+							maxDate={new Date()}
+							dateFormat="yy-mm-dd"
 							error={state?.errors?.birthDay}
 						/>
 					</Col>

@@ -9,6 +9,7 @@ import {
 	TextInput,
 	BackButton,
 	DateInput,
+	TimeInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
@@ -51,20 +52,18 @@ const MeetCreateForm = ({ students }) => {
 						/>
 					</Col>
 					<Col lg={4}>
-						<DateInput
+						<TimeInput
 							name="startTime"
 							className="mb-3"
 							label="Start Time"
-							timeOnly
 							error={state?.errors?.startTime}
 						/>
 					</Col>
 					<Col lg={4}>
-						<DateInput
+						<TimeInput
 							name="stopTime"
 							className="mb-3"
 							label="End Time"
-							timeOnly
 							error={state?.errors?.stopTime}
 						/>
 					</Col>

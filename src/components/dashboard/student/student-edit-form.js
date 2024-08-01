@@ -12,6 +12,7 @@ import {
 	TextInput,
 	BackButton,
 	PasswordInput,
+	DateInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
@@ -67,12 +68,13 @@ const StudentEditForm = ({ user, advisorTeachers }) => {
 						/>
 					</Col>
 					<Col md={6} lg={4}>
-						<TextInput
-							type="date"
+						<DateInput
 							name="birthDay"
 							className="mb-3"
 							label="Date of birth"
-							defaultValue={user.birthDay}
+							maxDate={new Date()}
+							dateFormat="yy-mm-dd"
+							value={user.birthDay}
 							error={state?.errors?.birthDay}
 						/>
 					</Col>

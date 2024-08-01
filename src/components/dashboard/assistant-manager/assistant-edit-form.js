@@ -10,7 +10,9 @@ import {
 	SelectInput,
 	SubmitButton,
 	TextInput,
-	BackButton,PasswordInput
+	BackButton,
+	PasswordInput,
+	DateInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
@@ -66,12 +68,13 @@ const AssistantEditForm = ({ user }) => {
 						/>
 					</Col>
 					<Col>
-						<TextInput
-							type="date"
+						<DateInput
 							name="birthDay"
 							className="mb-3"
 							label="Date of birth"
-							defaultValue={user.birthDay}
+							maxDate={new Date()}
+							dateFormat="yy-mm-dd"
+							value={user.birthDay}
 							error={state?.errors?.birthDay}
 						/>
 					</Col>

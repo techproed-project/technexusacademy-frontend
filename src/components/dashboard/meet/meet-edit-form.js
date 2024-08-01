@@ -10,6 +10,7 @@ import {
 	BackButton,
 	DateInput,
 	MultipleSelect,
+	TimeInput,
 } from "@/components/common/form-fields";
 import { swAlert } from "@/helpers/swal";
 import { useRouter } from "next/navigation";
@@ -55,21 +56,19 @@ const MeetEditForm = ({ meet, students, selectedStudentIds }) => {
 						/>
 					</Col>
 					<Col lg={4}>
-						<DateInput
+						<TimeInput 
 							name="startTime"
 							className="mb-3"
 							label="Start Time"
-							timeOnly
 							value={meet.startTime}
 							error={state?.errors?.startTime}
 						/>
 					</Col>
 					<Col lg={4}>
-						<DateInput
+						<TimeInput
 							name="stopTime"
 							className="mb-3"
 							label="End Time"
-							timeOnly
 							value={meet.stopTime}
 							error={state?.errors?.stopTime}
 						/>

@@ -5,6 +5,7 @@ import MaskedInput from "./masked-input";
 import BackButton from "./back-button";
 import PasswordInput from "./password-input";
 import DateInput from "./date-input";
+import TimeInput from "./time-input";
 import CheckInput from "./check-input";
 import MultipleSelect from "./multiple-select";
 
@@ -16,6 +17,7 @@ export {
 	BackButton,
 	PasswordInput,
 	DateInput,
+	TimeInput,
 	CheckInput,
 	MultipleSelect
 };

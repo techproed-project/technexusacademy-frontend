@@ -16,3 +16,6 @@ export const getTermLabel = (val) => {
 	const term = config.educationTerms.find((item) => item.value === val);
 	return term?.label ?? "";
 };
+
+export const wait = (delay = 5) =>
+	new Promise((resolve) => setTimeout(resolve, delay * 1000));

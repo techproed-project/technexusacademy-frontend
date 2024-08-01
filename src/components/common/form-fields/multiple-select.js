@@ -20,7 +20,7 @@ const MultipleSelect = ({ name, error, label, className, values, ...rest }) => {
 				<MultiSelect
 					{...rest}
 					invalid={!!error}
-					className="w-100"
+					className="w-100 form-control-lg"
 					value={selectedItems}
 					onChange={(e) => setSelectedItems(e.value)}
 				/>
