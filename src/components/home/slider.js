@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import "./slider.scss";
 import { Carousel } from "react-bootstrap";
@@ -10,7 +10,13 @@ const Slider = () => {
 		<Carousel fade className="main-slider">
 			{slides.map((item) => (
 				<Carousel.Item key={item.id}>
-					<Image src={`/img/slider/${item.image}`} width={1800} height={800} alt={item.title}/>
+					<Image
+						src={`/img/slider/${item.image}`}
+						width={1800}
+						height={800}
+						alt={item.title}
+						priority
+					/>
 					<Carousel.Caption>
 						<h3>{item.title}</h3>
 						<p>{item.desc}</p>
